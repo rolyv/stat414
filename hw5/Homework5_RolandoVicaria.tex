@@ -1,0 +1,467 @@
+\documentclass{article}
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    
+    
+    \title{Homework 5}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    Section 2.3
+    \begin{enumerate}
+      
+      %1
+      \item
+	\begin{enumerate}
+	 %a
+	 \item 
+	  Mean:
+	  \begin{align*}
+	    E(X) = \mathlarger{\sum}_{x \in S}{x \cdot f(x)} &= 5 \left(\dfrac{1}{5}\right)
+	    + 10 \left(\dfrac{1}{5}\right) + 15 \left(\dfrac{1}{5}\right) 
+	    + 20 \left(\dfrac{1}{5}\right) + 25 \left(\dfrac{1}{5}\right) \\
+	    &= 1 + 2 + 3 + 4 + 5 \\
+	    &= 15
+	  \end{align*}
+	  
+	  Variance: \\
+	  We first have to compute $E(X^2)$
+	  \begin{align*}
+	    E(X^2) = \mathlarger{\sum}_{x^2 \in S}{x^2 \cdot f(x)} &= 5^2 \left(\dfrac{1}{5}\right)
+	      + 10^2 \left(\dfrac{1}{5}\right) + 15^2 \left(\dfrac{1}{5}\right)
+	      + 20^2 \left(\dfrac{1}{5}\right) + 25^2 \left(\dfrac{1}{5}\right) \\
+	      &= 5 + 20 + 45 + 80 + 125 \\
+	      &= 275
+	  \end{align*}
+	  
+	  Therefore, $\sigma^2 = E(X^2) - [E(X)]^2 = 275 - 15^2 = 50$
+	  
+	 %b
+	 \item
+	  Mean:
+	    $E(X) = \mathlarger{\sum}_x{x \cdot f(x)} = 5(1) = 5$
+	    
+	  Variance: \\
+	  We first compute $E(X^2)$: $E(X^2) = \mathlarger{\sum}_x{x^2 \cdot f(x)} = 25(1) = 25$
+	  
+	  Therefore, $\sigma^2 = E(X^2) - [E(X)]^2 = 25 - 25 = 0$
+	  
+	 %c
+	 \item
+	  Mean: 
+	    $E(X) = \mathlarger{\sum}_{x \in S}{x \cdot f(x)} = 1 \left(\dfrac{3}{6}\right)
+		+ 2 \left(\dfrac{2}{6}\right) + 3 \left(\dfrac{1}{6}\right) = \dfrac{10}{6} 
+		= \dfrac{5}{3}$
+		
+	  Variance:\\
+	  We first compute $E(X^2)$: \\
+	  $E(X^2) = \mathlarger{\sum}_{x \in S}{x^2 \cdot f(x)} = 1^2 \left(\dfrac{3}{6}\right)
+		+ 2^2 \left(\dfrac{2}{6}\right) + 3^2 \left(\dfrac{1}{6}\right) 
+		= \dfrac{20}{6} = \dfrac{10}{3}$
+		
+	  Therefore, $\sigma^2 = E(X^2) - [E(X)]^2 = \dfrac{10}{3} - \left(\dfrac{5}{3}\right)^2
+	      = \dfrac{5}{9}$
+
+	\end{enumerate}
+      
+      \addtocounter{enumi}{1}
+
+      %3
+      \item
+	\begin{enumerate}
+	 %a
+	 \item 
+	  $Var(X+4) = E[(X+4)^2] - [E(X+4)]^2 = 116 - 10^2 = 16$
+	  
+	 %b
+	 \item
+	  We are given that $E(X+4) = 10$. That means that $E(X) + 4 = 10$. Therefore, $\mu = E(X) = 6$
+	  
+	 %c
+	 \item
+	  We are given that $E[(X+4)^2] = 116$. That means that $E(X^2 + 8X + 16) = E(X^2) + 8E(X) + 16
+	    = 116$. Therefore, $E(X^2) = 116 - 16 - 8(6) = 52$. So $\sigma^2 = E(X^2) - [E(X)]^2 =
+	    52 - 36 = 16$
+	\end{enumerate}
+	
+      %4
+      \item
+	\begin{align*}
+	 E\left[\dfrac{(X - \mu)}{\sigma}\right] &= E\left(\dfrac{X}{\sigma}\right) 
+	      - E\left(\dfrac{\mu}{\sigma}\right) \\
+	    &= \dfrac{1}{\sigma}E(X) - \dfrac{\mu}{\sigma} \\
+	    &= \dfrac{\mu}{\sigma} - \dfrac{\mu}{\sigma} \\
+	    &= 0
+	\end{align*}
+	
+	\begin{align*}
+	 E\left[\left(\dfrac{X-\mu}{\sigma}\right)^2\right] &= E\left[\dfrac{X^2-2\mu X + \mu^2}{\sigma^2}\right] \\
+	    &= E\left(\dfrac{X^2}{\sigma^2}\right) - E\left(\dfrac{2\mu X}{\sigma^2}\right) +
+		E\left(\dfrac{\mu^2}{\sigma^2}\right) \\
+	    &= \dfrac{1}{\sigma^2}[E(X^2) - 2\mu E(X) + \mu^2] \\
+	    &= \dfrac{1}{\sigma^2}[E(X^2) - \mu^2] \\
+	    &= \dfrac{1}{\sigma^2}\sigma^2 \\
+	    &= 1
+	\end{align*}
+      \addtocounter{enumi}{6}
+
+      %11
+      \item
+	$M'(t) = \dfrac{2}{5}e^t + (2)\dfrac{1}{5}e^{2t} + (3)\dfrac{2}{5}e^{3t}$. \\ 
+	Evaluating this when $t = 0$ gives us: $\mu = \dfrac{2}{5} + (2)\dfrac{1}{5} + (3)\dfrac{2}{5} 
+	    = \dfrac{10}{5} = 2$.
+	
+	$M''(t) = \dfrac{2}{5}e^t + (4)\dfrac{1}{5}e^{2t} + (9)\dfrac{2}{5}e^{3t}$. \\
+	Evaluting this when $t = 0$ gives us $E(X^2) = \dfrac{2}{5} + (4)\dfrac{1}{5} + (9)\dfrac{2}{5} 
+	  = \dfrac{2}{5} + \dfrac{4}{5} + \dfrac{18}{5} = \dfrac{24}{5}$
+	
+	Therefore, $\sigma^2 = E(X^2) - [E(X)]^2 = \dfrac{24}{5} - 4 = \dfrac{4}{5}$
+	
+      
+	pmf of X: $f(x) = \dfrac{|2 - x| + 1}{5}$ for $x = 1,2,3$.
+      
+      \addtocounter{enumi}{3}
+	
+      %15
+      \item
+	\begin{enumerate}
+	 %a
+	 \item 
+	  \begin{align*}
+	   P(X \ge 20) &= 1 - P(X \le 19) \\
+	      &= 1 - (1 - .96^{19}) \\
+	      &= 0.4604
+	  \end{align*}
+	 
+	 %b
+	 \item
+	  \begin{align*}
+	   P(X \le 20) &= P(X=1) + P(X=2) + P(X=3) + \cdots + P(X=20) \\
+	      &= (.96^0)(.04^1) + (.96^1)(.04^1) + \cdots + (.96^{19})(.04^1) \\
+	      &= .04 \cdot (.96^0 + .96^1 + \cdots + .96^{19}) \\
+	      &= .04 \cdot \mathlarger{\sum}_{k=0}^{19}{.96^k} = .04 \cdot \dfrac{1-.96^{20}}{1-.96} \\
+	      &= 0.5580
+	  \end{align*}
+	 
+	 %c
+	 \item
+	  $P(X=20) = .96^{19}(.04) = 0.0184$
+	\end{enumerate}
+      \addtocounter{enumi}{2}
+      
+      %18
+      \item
+	\begin{align*}
+	 P(X > k+j | X > k) &= \dfrac{P(X > k+j \cap X > k)}{P(X > k)} \\
+	    &= \dfrac{P(X > k+j)}{P(X > k)} \\
+	    &= \dfrac{1 - P(X \le k + j)}{1 - P(X \le k)} \\
+	    &= \dfrac{1 - (1 - p^{k+j})}{1 - (1 - p^k)} \\
+	    &= \dfrac{p^{k+j}}{p^k} \\
+	    &= p^j \\
+	    &= 1 - (1 - p^j) \\
+	    &= 1 - P(X \le j) \\
+	    &= P(X > j)
+	\end{align*}
+    \end{enumerate}
+    
+    Section 2.4
+    \begin{enumerate}
+     \addtocounter{enumi}{3}
+     %4
+     \item 
+      \begin{enumerate}
+       %a
+       \item The distribution of $X$ is $b(7, 0.15)$.
+       %b
+       \item
+	\begin{enumerate}
+	 %(i)
+	 \item $P(X \ge 2) = 1 - P(X \le 1) = 1 - 0.7166 = 0.2834$
+	 %(ii)
+	 \item $P(X = 1) = P(X \le 1) - P(X \le 0) = 0.7166 - 0.3206 = 0.3960$
+	 %(iii)
+	 \item $P(X \le 3) = 0.9879$
+	\end{enumerate}
+      \end{enumerate}
+	
+     \newpage
+     %5
+     \item
+      $X \sim b(25,0.2)$
+      \begin{enumerate}
+       %a
+       \item 
+	$P(X \le 4) = 0.4207$
+       %b
+       \item
+	$P(X \ge 5) = 1 - P(X \le 4) = 1 - 0.4207 = 0.5793$
+       %c
+       \item
+	$P(X = 6) = P(X \le 6) - P(X \le 5) = 0.7800 - 0.6167 = 0.1633$
+       %d
+       \item
+	$\mu = np = 25(0.2) = 5$ \\
+	$\sigma^2 = np(1-p) = 25(0.2)(0.8) = 4$ \\
+	$\sigma = \sqrt{np(1-p)} = \sqrt{4} = 2$\\
+      \end{enumerate}
+
+     %6
+     \item
+      \begin{enumerate}
+       %a
+       \item $X \sim b(15,0.75)$, $Y = 15 - X \sim b(15,0.25)$
+       %b
+       \item 
+	$P(X \ge 10) = 1 - P(X \le 9) = 1 - P(Y \ge 6) = 1 - (1 - P(Y \le 5)) = 0.8516$
+       %c
+       \item
+	$P(X \le 10) = P(Y \ge 5) = 1 - P(Y \le 4) = 1 - 0.6865 = 0.3135$
+       %d
+       \item
+	$\mu = np = 15(0.75) = 11.25$ \\
+	$\sigma^2 = np(1-p) = 15(0.75)(0.25) = 2.8125$ \\
+	$\sigma = \sqrt{np(1-p)} = \sqrt{2.125} = 1.6771$
+      \end{enumerate}
+     \addtocounter{enumi}{1}
+      
+     %8
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$P(X \ge 1) = 1 - P(X = 0) = 1 - \left[\dbinom{4}{0}(0.99^0)(0.01^4)\right] = 1 - 0.00000001
+	  = 0.99999999 \approx 1$
+       %b
+       \item
+	$P(X = 4) = \dbinom{4}{4}(0.99^4)(0.01)^0 = 0.9606$
+      \end{enumerate}
+      
+     %9
+     \item
+      \begin{enumerate}
+       %a
+       \item $X \sim b(20, 0.8)$
+       %b
+       \item
+	$\mu = np = 20(0.8) = 16$ \\
+	$\sigma^2 = np(1-p) = 20(0.8)(0.2) = 3.2$ \\
+	$\sigma = \sqrt{np(1-p)} = \sqrt{3.2} = 1.789$
+       %c
+       \item
+	\begin{enumerate}
+	 %i
+	 \item 
+	  $P(X = 15) = \dbinom{20}{15}(0.8^{15})(0.2^5) = 0.1746$
+	 %ii
+	 \item
+	  $P(X > 15) = 1 - P(X \le 15) = 1 - 0.3704 = 0.6296$
+	 %iii
+	 \item
+	  $P(X \le 15) = 0.3704$
+	\end{enumerate}
+      \end{enumerate}
+
+     %10
+     \item
+      \begin{enumerate}
+       %a
+       \item $X \sim b(8, 0.9)$
+       %b
+       \item
+	\begin{enumerate}
+	 %i
+	 \item 
+	  $P(X = 8) = \dbinom{8}{8}(0.9^8)(0.1^0) = 0.4305$
+	 %ii
+	 \item
+	  $P(X \le 6) = 0.1869$
+	 %iii
+	 \item
+	  $P(X \ge 6) = 1 - P(X \le 5) = 1 - 0.0381 = 0.9619$
+	\end{enumerate}
+      \end{enumerate}
+
+     %11
+     \item
+      $\mu = np = 6, \sigma^2 = np(1-p) = 3.6$ \\
+      $1-p = \dfrac{3.6}{6} = 0.6 \rightarrow p = 0.4$ \\
+      $n = \dfrac{6}{0.4} = 15$ \\
+      $P(X = 4) = \dbinom{15}{4}(0.4^4)(0.6^{11}) = 0.1268$
+     \addtocounter{enumi}{1}
+    
+     %13
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$X \sim b(10,0.1)$\\
+	$P(X \ge 1) = 1 - P(X = 0) = 1 - \left[\dbinom{10}{0}(0.1^0)(0.9^{10})\right] = 1 - 0.3487
+	  = 0.6513$
+       %b
+       \item
+	$X \sim b(15,0.1)$\\
+	$P(X \ge 1) = 1 - P(X = 0) = 1 - \left[\dbinom{15}{0}(0.1^0)(0.9^{15})\right] = 1 - 0.2059
+	  = 0.7941$
+      \end{enumerate}
+     \addtocounter{enumi}{1}
+      
+     %15
+     \item
+      $P(X = 0 | C) = \dbinom{5}{0}(.05^0)(.95^5) = 0.7738$\\
+      $P(X = 0 | B) = \dbinom{5}{0}(.02^0)(.98^5) = 0.9039$\\
+      $P(X = 0 | A) = \dbinom{5}{0}(.03^0)(.97^5) = 0.8587$\\
+      \begin{align*}
+       P(C | X \ge 1) &= \dfrac{P(X \ge 1 | C) P(C)}{P(X \ge 1 | C)P(C) + P(X \ge 1|B)P(B) + 
+			    P(X \ge 1|A)P(A)} \\
+	&= \dfrac{(1 - P(X = 0|C))P(C)}{(1-P(X = 0|C))P(C) + (1-P(X = 0|B))P(B) + (1-P(X=0|A))P(A)} \\
+	&= \dfrac{(1 - 0.7738)(0.1)}{(1-0.7738)(0.1) + (1-0.9039)(0.5) + (1-0.8587)(0.4)} \\
+	&= 0.1778
+      \end{align*}
+     \addtocounter{enumi}{3}
+     
+     %19
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$f(x) = \dbinom{1}{x}(2/3)^x(1/3)^{1-x}$\\
+	$\mu = np = 1(2/3) = 2/3$ \\
+	$\sigma^2 = np(1-p) = 1(2/3)(1/3) = 2/9$ \\
+	$\sigma = \sqrt{np(1-p)} = \sqrt{2/9} \approx 0.4714$
+	
+       %b
+       \item
+	$f(x) = \dbinom{12}{x}(.75)^x(.25)^{12-x}$\\
+	$\mu = np = 12(.75) = 9$ \\
+	$\sigma^2 = np(1-p) = 12(.75)(.25) = 2.25$ \\
+	$\sigma = \sqrt{2.25} = 1.5$
+      \end{enumerate}
+
+     %20
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	\begin{enumerate}
+	 %(i)
+	 \item Binomial with $n=5$ and $p=0.7$
+	 %(ii)
+	 \item 
+	  $M'(t) = 5(0.7e^t)(0.3+0.7e^t)^4$ \\
+	  $\mu = M'(0) = 5(0.7)(1)^4 = 3.5$ \\
+	  \\
+	  $M''(t) = 3.5e^t(4)(0.3+0.7e^t)^3(0.7e^t) + 3.5e^t(0.3+0.7e^t)^4$ \\
+	  $E(X^2) = M''(0) = 9.8 + 3.5 = 13.3$ \\
+	  $\sigma^2 = E(X^2) - E(X)^2 = 13.3 - (3.5)^2 = 1.05$
+	 %(iii)
+	 \item
+	  $P(1 \le X \le 2) = P(X = 1) + P(X=2) = \dbinom{5}{1}(0.7)^1(0.3)^4 + \dbinom{5}{2}(0.7)^2(0.3)^3
+	    = 0.16065$
+	\end{enumerate}
+       %b
+       \item
+	\begin{enumerate}
+	 %(i)
+	 \item Geometric distribution with $p = 0.3$
+	 %(ii)
+	 \item
+	  $M'(t) = \dfrac{0.3e^t(1-0.7e^t) - 0.3e^t(-0.7e^t)}{(1-0.7e^t)^2} 
+		= \dfrac{0.3e^t-0.21e^{2t} + 0.21e^{2t}}{(1-0.7e^t)^2}
+		= \dfrac{0.3e^t}{(1-0.7e^t)^2}$ \\
+	  $\mu = M'(0) = \dfrac{0.3}{0.3^2} = 3.333$ \\
+	  \\
+	  $M''(t) = \dfrac{0.3e^t(1-0.7e^t)^2 - 0.3e^t(2)(-0.7e^t)(1-0.7e^t)}{(1-0.7e^t)^4}$ \\
+	  $E(X^2) = M''(0) = \dfrac{0.3(0.3)^2 - 0.3(2)(-0.7)(0.3)}{0.3^4} = 18.8889$ \\
+	  $\sigma^2 = E(X^2) - E(X)^2 = 18.8889 - (3.333)^2 = 7.78$
+	 %(iii)
+	 \item
+	  $P(1 \le X \le 2) = P(X=1) + P(X=2) = (0.7)^0(0.3)^1 + (0.7)^1(0.3)^1 = 0.51$
+	\end{enumerate}
+       %c
+       \item
+	\begin{enumerate}
+	 %(i)
+	 \item Bernoulli distribution with $p=0.55$
+	 %(ii)
+	 \item
+	  $M'(t) = 0.55e^t$ \\
+	  $\mu = M'(0) = 0.55$ \\
+	  \\
+	  $M''(t) = 0.55e^t$ \\
+	  $E(X^2) = M''(0) = 0.55$ \\
+	  $\sigma^2 = E(X^2) - E(X)^2 = 0.55 - 0.3025 = 0.2475$
+	 %(iii)
+	 \item
+	  $P(1 \le X \le 2) = P(X=1) + P(X=2) = 0.55$
+	\end{enumerate}
+       %d
+       \item
+	\begin{enumerate}
+	 %(i)
+	 \item I don't think this distribution has a name. 
+	 %(ii)
+	 \item
+	  $M'(t) = 0.3e^t + 0.8e^{2t} + 0.6e^{3t} + 0.4e^{4t}$  \\
+	  $\mu = M'(0) = 0.3 + 0.8 + 0.6 + 0.4 = 2.1$ \\
+	  \\
+	  $M''(t) = 0.3e^t + 1.6e^{2t} + 1.8e^{3t} + 1.6e^{4t}$ \\
+	  $E(X^2) = M''(0) = 0.3 + 1.6 + 1.8 + 1.6 = 5.3$ \\
+	  $\sigma^2 = E(X^2) - E(X)^2 = 5.3 - 2.1^2 = 0.89$
+	 %(iii)
+	 \item
+	  $P(1 \le X \le 2) = P(X=1) + P(X=2) = 0.3 + 0.4 = 0.7$
+	\end{enumerate}
+       %e
+       \item
+	\begin{enumerate}
+	 %(i)
+	 \item Uniform distribution where $f(x) = 1/10$ for $x=1,2,...,10$
+	 %(ii)
+	 \item
+	  $M'(t) = \mathlarger{\sum}_{x=1}^{10}{(0.1x)e^{tx}}$ \\
+	  $\mu = M'(0) = \mathlarger{\sum}_{x=1}^{10}{0.1x} = 0.1(1+2+\cdots+10) = 5.5$ \\
+	  \\
+	  $M''(t) = \mathlarger{\sum}_{x=1}^{10}{(0.1x^2)e^{tx}}$ \\
+	  $E(X^2) = M''(0) = \mathlarger{\sum}_{x=1}^{10}{0.1x^2} = 0.1(1+4+9+\cdots+100)
+	      = (0.1)\dfrac{10(11)(21)}{6} = (0.1)(385) = 38.5$ \\
+	  $\sigma^2 = E(X^2) - E(X)^2 = 38.5 - (5.5)^2 = 8.25$
+	 %(iii)
+	 \item
+	  $P(1 \le X \le 2) = P(X=1) + P(X=2) = 1/10 + 1/10 = 1/5$
+	\end{enumerate}
+
+
+      \end{enumerate}
+
+      
+    \end{enumerate}
+
+
+\end{document}

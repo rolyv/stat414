@@ -1,0 +1,258 @@
+\documentclass{article}
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    \newcommand\todo[1]{\textbf{TODO: #1}}% 
+    \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+    
+    \title{Homework 8}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    \textbf{Section 3.2}
+    \begin{enumerate}
+     %1
+     \item 
+      \begin{enumerate}
+       %a
+       \item 
+	$f(x) = \dfrac{1}{3}e^{-x/3}$ \\
+	$\mu = 3$ \\
+	$\sigma^2 = 3^2 = 9$
+       
+       %b
+       \item
+	$f(x) = 3e^{-3x}$ \\
+	$\mu = \dfrac{1}{3}$ \\
+	$\sigma^2 = \left(\dfrac{1}{3}\right)^2 = \dfrac{1}{9}$
+      \end{enumerate}
+     
+     %2
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$f(X) = \dfrac{3}{2}e^{-3x/2}$
+       
+       %b
+       \item
+	$P(X > 2) = e^{-3(2)/2} = e^{-3} \approx 0.04979$
+      \end{enumerate}
+     
+     %3
+     \item
+      \begin{align*}
+       P(X > x + y | X > x) &= \dfrac{P((X > x + y) \cap (X > x))}{P(X > x)} \\
+	&= \dfrac{P(X > x + y)}{P(X > x)} \\
+	&= \dfrac{e^{-(x+y)/\theta}}{e^{-x/\theta}} \\
+	&= e^{-y/\theta} \\
+	&= P(X > y)
+      \end{align*}
+     
+     %4
+     \item
+      We define $g(x) = 1 - F(x)$. 
+      \begin{align*}
+       P(X > x + y | X > x) &= \dfrac{P((X > x+y) \cap (X > x))}{P(X>x)} \\
+	&= \dfrac{P(X > x+y)}{P(X>x)} \\
+	&= \dfrac{1 - F(x+y)}{1 - F(x)}  \numberthis
+      \end{align*}
+      
+      By assumption, we know that $P(X > x+y | X > x) = P(X > y)$. We can express $P(X > y)$ as 
+	\begin{align*}
+	P(X > y) = 1 - F(y) \numberthis
+	\end{align*}
+
+      We can see by the equality of line (1) and line (2), that 
+	\begin{align*}
+	1 - F(x+y) = (1-F(x))(1-F(y))
+	\end{align*}
+      which shows that $g(x)$ satisfies the functional equation $g(x+y)=g(x)g(y)$.
+      
+      This is as far as I got...I throw in the towel...I'm not sure how to get to $e^{-\lambda x}$
+      from here. Mercy      
+      
+     \addtocounter{enumi}{1}
+     
+     %6
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$P(no\ flaws\ in\ first\ 40\ feet) = e^{-3(40)/100} = 0.3012$
+       
+       %b
+       \item
+	I assumed that the flaws in the sheets of aluminum follow a Poisson distribution and that 
+	the mean number of occurrences in an interval of length $w$ is poprtional to $\lambda$.
+      \end{enumerate}
+     
+     %7
+     \item
+      \begin{align*}
+       M(t) = E(e^{tX}) &= \mathlarger{\int}_0^\infty
+	      {e^{tx}\dfrac{x^{\alpha - 1}e^{-x/\theta}}{\Gamma(\alpha)\theta^\alpha} dx} \\	
+	    &= \mathlarger{\int}_0^\infty 
+	      {\dfrac{x^{\alpha-1} e^{-(1-\theta t)x/\theta}}{\Gamma(\alpha)\theta^\alpha}dx}\\	    
+	    &= \mathlarger{\int}_0^\infty
+	      {\dfrac{(\frac{\theta y}{1 - \theta t})^{\alpha-1} e^{-y}}{\Gamma(\alpha)\theta^\alpha}\dfrac{\theta}{1-\theta t} dy}\\
+	    &= \mathlarger{\int}_0^\infty
+	      {\dfrac{y^{\alpha - 1}e^{-y}}{\Gamma(\alpha)(1-\theta t)^\alpha} dy} \\
+	    &= \dfrac{1}{\Gamma(\alpha)(1-\theta t)^\alpha}\mathlarger{\int}_0^\infty {y^{\alpha -1}e^{-y} dy} \\
+	    &= \dfrac{\Gamma(\alpha)}{\Gamma(\alpha)(1-\theta t)^\alpha} \\
+	    &= \dfrac{1}{(1-\theta t)^\alpha}
+      \end{align*}
+     
+     %8
+     \item
+      $P(X < 5; \alpha = 2, \theta = 4) = \mathlarger{\int}_0^5{\dfrac{1}{\Gamma(2)4^2}x^1 e^{-x/4}dx} 
+	= \dfrac{1}{16}\mathlarger{\int}_0^5 {xe^{-x/4}dx}$
+      
+      Doing integration by parts with $u = x$ and $dv = e^{-x/4}dx$, we get $du = dx$ and 
+      $v = -4e^{-x/4}$:      
+	\begin{align*}
+	  \dfrac{1}{16}\left\{-4xe^{-x/4} \Big|_0^5 + 4 \mathlarger{\int}_0^5 {e^{-x/4}dx}\right\}
+	    &= \dfrac{1}{16}\left\{-20e^{-5/4} + 4 \left[-4e^{-x/4}\right]_0^5\right\} \\
+	    &= \dfrac{1}{16}\left\{-20e^{-5/4} + 4\left[-4e^{-5/4} + 4\right]\right\} \\
+	    &= \dfrac{1}{16} \left[-36e^{-5/4} + 16 \right] \\
+	    &= 0.3554
+	\end{align*}
+     \addtocounter{enumi}{1}
+     
+     %10
+     \item
+      From 3.2-7, we found that $M(t) = (1-\theta t)^{-\alpha}$. We start by computing $M'(t)$:
+	$$M'(t) = \alpha\theta(1-\theta t)^{-\alpha-1}$$
+      Evaluating this when $t=0$: $M'(0) = E(X) = \alpha\theta$
+     
+      To find $Var(X)$, we compute $M''(t)$:
+	$$M''(t) = \alpha(\alpha+1)\theta^2(1-\theta t)^{-\alpha -2}$$
+	
+      Evaluating this when $t=0$: $M''(0) = \alpha^2\theta^2 + \alpha\theta^2$
+      
+      Therefore, 
+	$$Var(X) = M''(0) - [M'(0)]^2 = \alpha^2\theta^2 + \alpha\theta^2 - (\alpha\theta)^2 = 
+	  \alpha\theta^2$$	
+
+     %11
+     \item
+      $X \sim \chi^2(17)$
+      \begin{enumerate}
+       %a
+       \item 
+	$P(X < 7.564) = 0.025$
+       
+       %b
+       \item
+	$P(X > 27.59) = 0.05$
+	
+       %c
+       \item
+	$P(6.408 < X < 27.59) = 0.95 - 0.01 = 0.94$
+       
+       %d
+       \item
+	$\chi_{0.95}^2(17) = 8.672$
+       
+       %e
+       \item
+	$\chi_{0.025}^2(17) = 30.19$
+      \end{enumerate}
+     
+     %12
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$W \sim Gamma(7, 1/16)$
+	
+       %b
+       \item
+	$P(W \le 0.5) = 1 - \mathlarger{\sum}_{k=0}^{6}{\dfrac{8^k e^{-8}}{k!}} = 0.6866$
+      \end{enumerate}
+     
+     %13
+     \item
+      $X \sim \chi^2(23)$
+      \begin{enumerate}
+       %a
+       \item 
+	$P(14.85 < X < 32.01) = 0.90 - 0.10 = 0.80$
+
+       %b
+       \item
+	$P(a < X < b) = 0.95$ and $P(X < a) = 0.025$\\
+	$a = 11.69, b = 38.08$
+       
+       %c
+       \item
+	$\mu = 23$ \\
+	$\sigma^2 = 46$
+       
+       %d
+       \item
+	$\chi_{0.05}^2(23) = 35.17$ \\
+	$\chi_{0.95}^2(23) = 13.09$
+      \end{enumerate}
+     
+     %14
+     \item
+      $X \sim \chi^2(12)$ \\
+      $P(a < X < b) = 0.90$ and $P(X < a) = 0.05$ \\
+      $a = 5.226, b = 21.03$
+     \addtocounter{enumi}{1}
+     
+     %16
+     \item
+      $X \sim Gamma(8, 2)$ 
+	\begin{align*}
+	  P(X > 26.3) &= \mathlarger{\sum}_{k=0}^7 {\dfrac{(26.3/2)^k e^{-26.3/2}}{k!}} \\
+	    &= e^{-13.15} \left[ \dfrac{13.15^0}{0!} + \dfrac{13.15^1}{1!} + \dfrac{13.15^2}{2!} 
+	      + \cdots + \dfrac{13.15^7}{7!} \right] \\
+	    &= 25675.093e^{-13.15} \\
+	    &= 0.04995
+	\end{align*}
+     \addtocounter{enumi}{3}
+     
+     %20
+     \item
+      \begin{align*}
+       E[v(t)] &= \mathlarger{\int}_0^3{v(t)f(t)dt} + \mathlarger{\int}_3^\infty{0f(t)dt} \\
+	&= \mathlarger{\int}_0^3{100(2^{3-t}-1)\cdot\dfrac{1}{5}e^{-t/5}dt} \\
+	&= 20 \mathlarger{\int}_0^3{(2^{3-t}-1)e^{-t/5}dt} \\
+	&= 20 \left\{\mathlarger{\int}_0^3{2^{3-t}e^{-t/5}dt}-\mathlarger{\int}_0^3{e^{-t/5}dt}\right\} \\
+	&= 20 \left\{\mathlarger{\int}_0^3{e^{(3-t)\ln{2}}e^{-t/5}dt}-\mathlarger{\int}_0^3{e^{-t/5}dt}\right\} \\
+	&= 20 \left\{\mathlarger{\int}_0^3{e^{3\ln{2}-t\ln{2}-t/5}dt}-\mathlarger{\int}_0^3{e^{-t/5}dt}\right\} \\
+	&= 20 \left\{\mathlarger{\int}_0^3{e^{3\ln{2}-(\ln{2}+1/5)t}dt}-\mathlarger{\int}_0^3{e^{-t/5}dt}\right\} \\
+	&= 20 \left\{\left[\dfrac{e^{3\ln{2}-(\ln{2}+1/5)t}}{-(\ln{2}+1/5)}\right]_0^3 - \left[-5e^{-t/5}\right]_0^3\right\} \\
+	&= 20 \left(8.3426 - 2.2559 \right) \\
+	&= 121.734
+      \end{align*}
+
+    \end{enumerate}
+\end{document}

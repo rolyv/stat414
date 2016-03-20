@@ -1,0 +1,235 @@
+\documentclass{article}
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    
+    
+    \title{Homework 3}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    Section 1.4
+    \begin{enumerate}
+     
+     \addtocounter{enumi}{1}
+     
+     %2
+     \item 
+      \begin{enumerate}
+       \item $P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.3 + 0.6 - 0.18 = 0.72$
+       \item $P(A | B) = \dfrac{P(A \cap B)}{P(B)} = \dfrac{0}{P(B)} = 0$
+      \end{enumerate}
+
+     \addtocounter{enumi}{2}
+     
+     %5
+     \item 
+      $P(A) = .8$ \\
+      $P(B) = .5$ \\
+      $P(A \cup B) = .9$ \\
+      \\
+      $P(A \cup B) = P(A) + P(B) - P(A \cap B)$ \\
+      $.9 = .8 + .5 - P(A \cap B)$ \\
+      $P(A \cap B) = .4 = .8 \cdot .5 = P(A)\cdot P(B)$\\
+      Therefore, A and B are independent events.
+
+      %6
+      \item 
+	$A$ and $(B \cap C)$: \\
+	\begin{align*}
+	 P(A \cap (B \cap C)) &= P(A \cap B \cap C) \\
+	  &= P(A)P(B)P(C)
+	\end{align*}
+	
+	
+	$A$ and $(B \cup C)$: \\
+	\begin{align*}
+	 P(A \cap (B \cup C)) &= P((A \cap B) \cup (A \cap C)) \\
+	  &= P(A \cap B) + P(A \cap C) - P(A \cap B \cap C) \\
+	  &= P(A)P(B) + P(A)P(C) - P(A)P(B)P(C) \\
+	  &= P(A)[P(B) + P(C) - P(B)P(C)] \\
+	  &= P(A)[P(B) + P(C) - P(B \cap C)] \\
+	  &= P(A)P(B \cup C)
+	\end{align*}
+
+	\newpage
+	$A'$ and $(B \cap C')$: \\
+	\begin{align*}
+	 P(A' \cap (B \cap C')) &= 1 - P(A \cup (B' \cup C)) \\
+	  &= 1 - [P(A) + P(B') + P(C) - P(A \cap B') - P(A \cap C) - P(B' \cap C) + P(A \cap B' \cap C)] \\
+	  &= 1 - P(A) - P(B) - P(C) + P(A \cap B') + P(A \cap C) + P(B' \cap C) - P(A \cap B'\cap C) \\
+	  &= [1 - P(A)][1 - P(B')][1 - P(C)] \\
+	  &= P(A)P(B')P(C)
+	\end{align*}
+
+	
+	$A'$, $B'$, and $C'$ are mutually independent: \\
+	Condition (a): 
+	\begin{align*}
+	 P(A' \cap B' \cap C') &= 1 - P(A \cup B \cup C) \\
+	  &= 1 - [P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)] \\
+	  &= 1 - [P(A) + P(B) + P(C) - P(A)P(B) - P(A)P(C) - P(B)P(C) + P(A)P(B)P(C)] \\
+	  &= 1 - P(A) - P(B) - P(C) + P(A)P(B) + P(A)P(C) + P(B)P(C) - P(A)P(B)P(C) \\
+	  &= [1- P(A)][1 - P(B)][1 - P(C)] \\
+	  &= P(A')P(B')P(C')
+	\end{align*}
+
+	Condition (b):
+	\begin{align*}
+	 P(A' \cap B') &= 1 - P(A \cup B) \\
+	  &= 1 - [P(A) + P(B) - P(A \cap B)] \\
+	  &= 1 - P(A) - P(B) + P(A)P(B) \\
+	  &= [1 - P(A)][1 - P(B)] \\
+	  &= P(A')P(B')
+	\end{align*}
+	\begin{align*}
+	 P(A' \cap C') &= 1 - P(A \cup C) \\
+	  &= 1 - [P(A) + P(C) - P(A \cap C)] \\
+	  &= 1 - P(A) - P(C) + P(A)P(C) \\
+	  &= [1 - P(A)][1 - P(C)] \\
+	  &= P(A')P(C')
+	\end{align*}
+	\begin{align*}
+	 P(B' \cap C') &= 1 - P(B \cup C) \\
+	  &= 1 - [P(B) + P(C) - P(B \cap C)] \\
+	  &= 1 - P(B) - P(C) + P(B \cap C) \\
+	  &= [1 - P(B)][1 - P(C)] \\
+	  &= P(B')P(C')
+	\end{align*}
+
+      %7
+      \item
+	\begin{enumerate}
+	 \item 
+	    $P(A_1 \cap A_2' \cap A_3') = P(A_1)\cdot P(A_2')\cdot P(A_3') = .5\cdot.3\cdot.4 = .06$\\
+	    $P(A_1' \cap A_2 \cap A_3') = P(A_1')\cdot P(A_2)\cdot P(A_3') = .5\cdot.7\cdot.4 = .14$\\
+	    $P(A_1' \cap A_2' \cap A_3) = P(A_1')\cdot P(A_2')\cdot P(A_3) = .5\cdot.3\cdot.6 = .09$\\
+	    $P(exactly\ one\ player\ successful) = .06+.14+.09 = 0.29$
+	 \item 
+	    $P(A_1' \cap A_2 \cap A_3) = P(A_1')\cdot P(A_2)\cdot P(A_3) = .5\cdot.7\cdot.6 = .21$\\
+	    $P(A_1 \cap A_2' \cap A_3) = P(A_1)\cdot P(A_2')\cdot P(A_3) = .5\cdot.3\cdot.6 = .09$\\
+	    $P(A_1 \cap A_2 \cap A_3') = P(A_1)\cdot P(A_2)\cdot P(A_3') = .5\cdot.7\cdot.4 = .14$\\
+	    $P(exactly\ one\ player\ misses) = .21+.09+.14 = 0.44$
+	\end{enumerate}
+      \addtocounter{enumi}{3}
+      
+      %11
+      \item 
+	\begin{enumerate}
+	 \item 
+	    If events $A$ and $B$ are mutually exclusive, then by definition, that means that 
+	 their intersection, $A\cap B$, is always 0. Therefore $P(A|B) = \dfrac{P(A\cap B)}{P(B)} = 0$. 
+	 This may or may not be equal to $P(A)$. So, they can be independent if $P(A) = 0$ or 
+	 $P(B) = 0$, but not always.
+	 
+	 \item 
+	    We have two cases: 
+	      \begin{enumerate}
+	       \item $P(B|A) = \dfrac{P(A \cap B)}{P(A)} = \dfrac{P(A)}{P(A)} = 1$. This
+		means that if $P(B) = 1$, then they can be independent. 
+	    
+	       \item $P(A|B) = \dfrac{P(A \cap B)}{P(B)} = \dfrac{P(A)}{P(B)}$. This can equal $P(A)$
+		if $P(A) = 0$ or if $P(B) = 1$.
+	      \end{enumerate}	    
+	\end{enumerate}
+	  
+      %12
+      \item 
+	\begin{enumerate}
+	 \item $P(HHTHT) = .5\cdot.5\cdot.5\cdot.5\cdot.5 = (.5)^5 = 0.03125$
+	 \item $P(THHHT) = (.5)^5 = 0.03125$
+	 \item $P(HTHTH) = (.5)^5 = 0.03125$
+	 \item $P(three\ heads\ occurring) 
+	 = \dbinom{5}{3}\cdot\left(\dfrac{1}{2}\right)^3\cdot\left(\dfrac{1}{2}\right)^2 = 0.3125$
+	\end{enumerate}
+      \addtocounter{enumi}{5}
+
+      %18
+      \item 
+	\begin{enumerate}
+	 \item 7
+	 \item $\left(\dfrac{1}{2}\right)^7 = \dfrac{1}{128} = 0.0078125$
+	 \item $32 + 16 + 8 + 4 + 2 + 1 = 63$
+	 \item $\left(\dfrac{1}{2}\right)^{63} = 0.00000000000000000010842022$ \\
+	 I think the statement is wrong and actually represents a higher probability than calculated
+	 above. I think it's closer to ``1 in 9,223,372,036,854,775,808''
+	\end{enumerate}	
+    \end{enumerate}
+    
+    Section 1.5
+    \begin{enumerate}
+     \addtocounter{enumi}{1}
+     
+     %2
+     \item 
+      \begin{enumerate}
+       \item $P(G) = P((G \cap A) \cup (G \cap B)) = P(G|A)P(A) + P(G|B)P(B) 
+       = .85\cdot.4 + .75\cdot.6 = 0.79$
+       \item $P(A|G) = \dfrac{P(G|A)P(A)}{P(G)} = \dfrac{.85\cdot.4}{.79} = .4304$
+      \end{enumerate}
+      
+     %3
+     \item 
+	The percentage of patients with regular heartbeat and low blood pressure is 15.1\%
+	\begin{longtable}[c]{@{}lcccl@{}}
+	  \toprule
+	  & Low & Normal & High\tabularnewline
+	  \midrule
+	  \endhead
+	  irregular & 39 & 71.5 & 59.5 & 170\tabularnewline
+	  regular & 151 & & & 830\tabularnewline
+	  & 190 & 650 & 160 & 1000 \tabularnewline
+	  \bottomrule
+	\end{longtable}
+	
+     %4
+     \item 
+	Y = event that driver is in the 16-25 age group \\
+	A = event that driver has at least 1 accident \\
+	\\
+	$P(Y|A) = \dfrac{P(A|Y)P(Y)}{P(A)} = \dfrac{.05\cdot.1}{.05\cdot.1 + .02\cdot.55 + 
+	  .03\cdot.2 + .04\cdot.15} = 0.1786$
+     \addtocounter{enumi}{3}
+      
+     %8
+     \item 
+	Total probability of $R$:
+	\begin{align*}
+	  P(R) &= P(R|B_1)P(B_1)+P(R|B_2)P(B_2)+P(R|B_3)P(B_3)+P(R|B_4)P(B_4) \\
+	       &= .1\cdot.4 + .05\cdot.3 + .03\cdot.2 + .02\cdot.1 \\
+	       &= 0.063
+	\end{align*}
+	\newline
+	
+	Posterior probabilities:\\
+	$P(B_1|R) = \dfrac{P(R|B_1)P(B_1)}{P(R)} = \dfrac{.1\cdot.4}{.063} = 0.6349$\\
+	$P(B_2|R) = \dfrac{P(R|B_2)P(B_2)}{P(R)} = \dfrac{.05\cdot.3}{.063} = 0.2381$\\
+	$P(B_3|R) = \dfrac{P(R|B_3)P(B_3)}{P(R)} = \dfrac{.03\cdot.2}{.063} = 0.09524$\\
+	$P(B_4|R) = \dfrac{P(R|B_4)P(B_4)}{P(R)} = \dfrac{.02\cdot.1}{.063} = 0.03174$
+    \end{enumerate}
+\end{document}

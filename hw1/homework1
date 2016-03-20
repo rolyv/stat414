@@ -1,0 +1,225 @@
+\documentclass{article}
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    
+    
+    \title{Homework 1}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    Previous edition:
+    \begin{enumerate}
+     \item[2.]
+	\begin{enumerate}
+	 \item Population: All families that have three children. \\
+	 Sample: One family selected at random \\
+	 Sample space (in terms of of their children as 3-tuples from youngest to oldest): \{ggg, ggb, gbg, bgg, gbb, bgb, bbg, bbb\} \\
+	 Type of data: categorical
+	 
+	 \item Population: All rats in the cage. \\
+	 Sample: One rat selected at random. \\
+	 Sample space: \{m, f\} \\
+	 Type of data: categorical
+	 
+	 \item Population: All 3 digit integers. \\
+	 Sample: One 3 digit integer selected at random. \\
+	 Sample space: \{ 100, 101, ..., 998, 999 \} \\
+	 Type of data: quantitative discrete
+	\end{enumerate}
+
+      \item[3.]
+	\begin{enumerate}
+	 \item With true random digits, I would assign a probability of 1/10 to each digit. The p.m.f. of $X$ would be: $f(x) = \dfrac{1}{10}$
+	  \addtocounter{enumii}{2}
+	 \item 
+	    \begin{tabular}{c | c | c}
+		  Digit & Frequency & Relative Frequency \\
+		  \hline
+		  0 & 8 & .0833 \\
+		  1 & 13 & .1354 \\
+		  2 & 15 & .1563 \\
+		  3 & 10 & .1042 \\
+		  4 & 12 & .125 \\
+		  5 & 10 & .1042 \\
+		  6 & 4 & .0417 \\
+		  7 & 9 & .0938 \\
+		  8 & 15 & .1563 \\
+		  9 & 0 & 0
+	    \end{tabular} 
+	    \begin{figure}[h!]
+ \centering
+ \includegraphics[scale=.5]{./images/histogram.jpg}
+ % histogram.jpg: 605x340 pixel, 72dpi, 21.34x11.99 cm, bb=0 0 605 340
+\end{figure}
+
+The figure below shows the relative frequencies of the 10 digits in blue and the probability histogram in orange.
+We can see that the mean value of the blue bars is actually .1, the expected probability of each
+digit.
+	    
+	\end{enumerate}
+
+	\newpage
+      \item[13.]
+	\begin{enumerate}
+	 \item Airline with better on-time performance per city: \\
+	 Los Angeles: Alaska Airlines (.889 vs .856) \\
+	 Phoenix: Alaska Airlines (.948 vs .921) \\
+	 San Diego: Alaska Airlines (.914 vs .855) \\
+	 San Francisco: Alaska Airlines (.831 vs .713) \\
+	 Seattle: Alaska Airlines (.858 vs .767)
+	 
+	 \item Airline with better overall on-time performance: America West (.867 vs .891)
+	 
+	 \item This is an example of Simpson's paradox where Alaska Airlines shows better on-time performance in each individual city, but America West has better on-time performance overall.
+	 The city there they both had the best performance, Phoenix, America West had many more flights.
+	\end{enumerate}
+    \end{enumerate}
+
+    
+    Current edition:
+    \begin{enumerate}
+     \item Given: \\ 
+     $P(PT \cap C) = .28$ \\
+     $P(PT' \cap C') = P((PT \cup C)') = 1 - P(PT \cup C) = .08$ \\
+     $P(PT \cup C) = .92$ \\
+     $P(C) = P(PT) - .16$ \\
+     \\
+     Using theorem 1.1-5: \\
+     $P(PT \cup C) = P(PT) + P(C) - P(PT \cap C)$ \\
+     $.92 = P(PT) + P(PT) - .16 - .28$ \\
+     $P(PT) = (.92 + .16 + .28) / 2 = .68$
+     
+     \item Given: \\
+     $P(M) = .85$ \\
+     $P(S) = .23$ \\
+     $P(M \cap S) = .17$ \\
+     \\
+     We're looking for the probability $P(M' \cap S') = 1 - P(M \cup S)$ \\
+     \\
+     To find $P(M \cup S)$ we apply theorem 1.1-5: \\
+     $P(M \cup S) = P(M) + P(S) - P(M \cap S) = .85 + .23 - .17 = .91$\\
+     \\
+     Therefore, $P(M' \cap S') = 1 - P(M \cup S) = 1 - .91 = .09$
+     
+     \item 
+      \begin{enumerate}
+       \item $P(A) = 12 / 52$ \{JH, JD, JC, JS, QH, QD, QC, QS, KH, KD, KC, KS\}
+       \item $P(A \cap B) = 2 / 52$ \{JH, JD\}
+       \item $P(A \cup B) = 16 / 52$ \{JH, JD, JC, JS, QH, QD, QC, QS, KH, KD, KC, KS, 9H, 9D, 10H, 10D\}
+       \item $P(C \cup D) = 1$
+       \item $P(C \cap D) = 0$
+      \end{enumerate}
+
+     \item 
+      \begin{enumerate}
+       \item \{TTTT, TTTH, TTHT, THTT, HTTT, TTHH, THTH, HTTH, HTHT, HHTT, THHT, 
+       HHHT, HHTH, HTHH, THHH, HHHH\}
+       \item 
+	\begin{enumerate}
+	 \item $P(A) = 5 / 16$
+	 \item $P(A \cap B) = 0$
+	 \item $P(B) = 10 / 16 = 5 / 8$
+	 \item $P(A \cap C) = 4 / 16 = 1 / 4$
+	 \item $P(D) = 4 / 16 = 1 / 4$
+	 \item $P(A \cup C) = 9 / 16$
+	 \item $P(B \cap D) = 4 / 16 = 1 / 4$
+	\end{enumerate}
+
+      \end{enumerate}
+      \addtocounter{enumi}{1}
+      
+      \item 
+	\begin{enumerate}
+	 \item $P(A \cup B) = .4 + .5 - .3 = .6$
+	 \item $P(A \cap B') = .4 - .3 = .1$
+	 \item $P(A' \cup B') = 1 - P(A \cap B) = 1 - .3 = .7$
+	\end{enumerate}
+	
+      \item Given: \\
+      $P(A \cup B) = .76$ \\
+      $P(A \cup B') = .87$ \\
+      \\
+      We can rewrite the second fact as $P(B) - P(A \cap B) = .13$ \\
+      \\
+      From theorem 1.1-5: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$ \\
+      $.76 = P(A) + .13$ \\
+      $P(A) = .76 - .13 = .63$
+      
+      \item Given: \\
+      $P(L' \cap R') = 1 - P(L \cup R) = .21 \Rightarrow P(L \cup R) = .79$ \\
+      $P(L) = .41$ \\
+      $P(R) = .53$ \\
+      \\
+      $P(L \cap R) = P(L) + P(R) - P(L \cup R) = .41 + .53 - .79 = .15$
+      
+      \item 
+	\begin{enumerate}
+	 \item $P(A_1 \cup A_2 \cup A_3) = P(A_1) + P(A_2) + P(A_3) - P(A_1 \cap A_2) - P(A_1 \cap A_3) - P(A_2 \cap A_3) + P(A_1 \cap A_2 \cap A_3) 
+	 = \dfrac{1}{3} + \dfrac{1}{3} + \dfrac{1}{3} - \dfrac{1}{9} - \dfrac{1}{9} - \dfrac{1}{9} + \dfrac{1}{27} = \dfrac{19}{27}$ 
+	 \item 
+	    $P(A_1 \cup A_2 \cup A_3)$ can also be expressed as 1 minues the intersection of the 
+	    complements of $A_1$, $A_2$, and $A_3$, i.e. $1 - P(A_1' \cap A_2' \cap A_3')$. \\
+	    These are independent events because the occurence of one does not change the probability
+	    of the others occuring. Therefore, we can express the intersection as a product of 
+	    the individual probabilities: $1 - (P(A_1') \times P(A_2') \times P(A_3'))$ \\
+	    Rewriting the complements: $1 - ((1 - P(A_1)) \times (1 - P(A_2)) \times (1 - P(A_3))$.\\
+	    Since we know that $P(A_i) = 1/3$ for i = 1,2,3, the previous expression can be reduced
+	    to $1 - (1 - 1/3)^3$.
+	\end{enumerate}
+      \addtocounter{enumi}{1}
+      
+      \item 
+	\begin{enumerate}
+	 \item Based on the last line of the problem that indicates we only care about the number, 
+	 the sample space consists of the numbers of all the possible slots: \{1,2,3,...,36,0,00\}. 
+	 It may be useful to also add along side each number, the color of the slot. But aside from 
+	 the green ones, the problem doesn't describe how those colors are assigned.
+	 \item $P(A) = 2/38 = 1/19$
+	 \item $P(B) = 4/38 = 2/19$
+	 \item $P(D) = 18/38 = 9/19$
+	\end{enumerate}
+      \addtocounter{enumi}{3}
+      
+      \item 
+	\begin{enumerate}
+	 \item By theorem 1.1-6, we know that the probability of the union of all these events is 
+	 equal to the sum of the probabilities of the events minus the probabilities of the 
+	 intersections of all possible subsets of the events plus the probability of the 
+	 intersection of all the events. Since these events are mutually exclusive, all the 
+	 intersection terms will be 0. Thus, the theorem will reduce to the sum of the individual
+	 probabilities of each event. Also, since the events are exhaustive, their sum must equal 1. 
+	 In other words: $\sum_1^m{P(A_i)} = 1$. If all $P(A_i)$ are equal, then then $P(A_i) = 1/m$ 
+	 for i = 1,2,...,m.
+	 \item Part (a) shows that the $P(A_i) = 1/m$ for all i = 1,2,...,m. By the same argument 
+	 above, the theorem 1.1-6 will reduce to a sum of the individual probabilities of 
+	 events $A_i$ for i = 1,2,...,h. Therefore, the $P(A)$ where $A = A_1 \cup A_2 \cup \cdots \cup A_h$
+	 is equal to: $P(A) = \sum_1^h{P(A_i)} = \sum_1^h{\dfrac{1}{m}} = \dfrac{h}{m}$
+	 
+	\end{enumerate}
+
+    \end{enumerate}
+\end{document}

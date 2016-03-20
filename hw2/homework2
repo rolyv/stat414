@@ -1,0 +1,384 @@
+\documentclass{article}
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    
+    
+    \title{Homework 2}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    Section 1.2
+    \begin{enumerate}
+     %1
+     \item $8\cdot8\cdot8\cdot8 = 8^4 = 4096$
+     \addtocounter{enumi}{1}
+     
+     %3
+     \item 
+      \begin{enumerate}
+       \item $26\cdot26\cdot10\cdot10\cdot10\cdot10 = 6760000$
+       \item $26\cdot26\cdot26\cdot10\cdot10\cdot10 = 17576000$
+      \end{enumerate}
+
+      %4
+      \item 
+	\begin{enumerate}
+	 \item $\dbinom{4}{1}\cdot\dbinom{6}{3} = \dfrac{4!}{1!3!}\cdot\dfrac{6!}{3!3!} = 80$
+	 \item 
+	  \begin{align*}
+	    &\dbinom{4}{1}\cdot\left[\dbinom{6}{0}+\dbinom{6}{1}+\dbinom{6}{2}+\dbinom{6}{3}+\dbinom{6}{4}+\dbinom{6}{5}+\dbinom{6}{6}\right] \\
+	    &= 4 \cdot (1 + 6 + 15 + 20 + 15 + 6 + 1) \\
+	    &= 4 \cdot (54) \\
+	    &= 216
+	  \end{align*}
+	 \item $\dbinom{4-1+3}{3} = \dfrac{(4-1+3)!}{3!(4-1)!} = 20$
+	\end{enumerate}
+
+      %5
+      \item
+	\begin{enumerate}
+	 \item $4! = 4\cdot3\cdot2\cdot1 = 24$
+	 \item $4\cdot4\cdot4\cdot4 = 4^4 = 256$
+	\end{enumerate}
+      
+      %6
+      \item 
+	A player can win in 3, 4 or 5 sets, therefore:
+	  \begin{align*}
+	    &\dbinom{2}{1} \cdot \left[ \dbinom{3}{3} + \dbinom{4}{3} + \dbinom{5}{3} \right] \\
+	    &= 2 \cdot (1 + 4 + 10) \\
+	    &= 30
+	  \end{align*}
+	  
+      %7
+      \item 
+	$N(S) = 10^4 = 10000$ 	
+	\begin{enumerate}
+	 \item 
+	    $N(A) = 4! = 24$ \\
+	    $P(A) = \dfrac{24}{10000} = 0.0024$
+	 \item	    
+	    $N(A) = \dfrac{4!}{1!1!2!} = \dfrac{24}{2} = 12$ \\
+	    $P(A) = \dfrac{12}{10000} = 0.0012$
+	 \item
+	    $N(A) = \dfrac{4!}{2!2!} = \dfrac{24}{4} = 6$ \\
+	    $P(A) = \dfrac{6}{10000} = 0.0006$
+	 \item
+	    $N(A) = \dfrac{4!}{1!3!} = \dfrac{24}{6} = 4$ \\
+	    $P(A) = \dfrac{4}{10000} = 0.0004$
+	\end{enumerate}
+
+      %8
+      \item 
+	$$ 3\cdot3\cdot\sum_{i=0}^{12}{\dbinom{12}{i}} = 9 \cdot 4096 = 36864 $$
+	
+      %9
+      \item
+	\begin{enumerate}
+	 \item $\dbinom{2}{1} \cdot \dbinom{4}{4} = 2$
+	 \item 3 wins out of first 4 games: $\dbinom{2}{1} \cdot \dbinom{4}{3} = 8$
+	 \item 3 wins out of first 5 games: $\dbinom{2}{1} \cdot \dbinom{5}{3} = 20$
+	 \item 3 wins out of first 6 games: $\dbinom{2}{1} \cdot \dbinom{6}{3} = 40$
+	\end{enumerate}
+
+      %10
+      \item
+	Starting from the sum and working backwards:
+	\begin{align*}
+	 \dbinom{n-1}{r} + \dbinom{n-1}{r-1} = \dfrac{(n-1)!}{r!(n-1-r)!} + \dfrac{(n-1)!}{(r-1)!(n-1-r+1)!}
+	\end{align*}
+	
+	In order to add up the terms, we first multiply the first term by $\dfrac{n-r}{n-r}$ and the second
+	term by $\dfrac{r}{r}$:	
+	\begin{align*}
+	 &\dfrac{(n-r)(n-1)!}{r!(n-r)(n-r-1)!} + \dfrac{r(n-1)!}{r(r-1)!(n-r)!} \\
+	 &= \dfrac{(n-r)(n-1)! + r(n-1)!}{r!(n-r)!} \\
+	 &= \dfrac{(n-1)!(n-r+r)}{r!(n-r)!} = \dfrac{(n-1)!\cdot n}{r!(n-r)!} \\
+	 &= \dfrac{n!}{r!(n-r)!} \\
+	 &= \dbinom{n}{r}
+	\end{align*}
+      
+      %11
+      \item 
+	\begin{enumerate}
+	 \item $9! = 362880$
+	 \item $\dfrac{9!}{3!6!} = 84$
+	 \item $2^9 = 512$
+	\end{enumerate}
+
+      %12
+      \item 
+	We can show the first part by restarting 0 as $(1-1)^n$ and applying binomial expansion
+	(equation 1.2-1):
+	
+	\begin{align*}
+	 (1 - 1)^n = \sum_{r=0}^n{\dbinom{n}{r}(-1)^r(1)^{n-r}} = \sum_{r=0}^n{(-1)^r\dbinom{n}{r}}
+	\end{align*}
+	
+	We can show the second part by induction and using Pascal's equation
+	$$ \sum_{r=0}^n{\dbinom{n}{r}} = 2^n $$
+	
+	We start with the base case $n = 0$:
+	$$ \sum_{r = 0}^n{\dbinom{n}{r}} = \dbinom{0}{0} = 1 = 2^0 $$
+	
+	Assuming the statement is true for $n-1$, then for all $n > 0$ and $r \in {0,\dots,n}$:
+	  \begin{align*}
+	   \sum_{r}{\dbinom{n}{r}} &= \sum_{r}{\left[\dbinom{n-1}{r-1} + \dbinom{n-1}{r}\right]} \\
+	    &= \sum_{r}{\dbinom{n-1}{r-1}} + \sum_{r}{\dbinom{n-1}{r}} \\
+	    &= 2^{n-1} + 2^{n-1} \\
+	    &= 2^n
+	  \end{align*}
+	
+      %13
+      \item 
+	$N(S) = \dbinom{52}{13} = 635013559600$
+	\begin{enumerate}
+	 \item 
+	    $N(A) = \dbinom{13}{5}\dbinom{13}{4}\dbinom{13}{3}\dbinom{13}{1} = 3421322190$ \\
+	    $P(A) = \dfrac{3421322190}{635013559600} = 0.00539$
+	 \item
+	    $N(A) = \dbinom{13}{5}\dbinom{13}{4}\dbinom{13}{2}\dbinom{13}{2} = 5598527220$ \\
+	    $P(A) = \dfrac{5598527220}{635013559600} = 0.00882$
+	 \item
+	    $N(A) = \dbinom{13}{5}\dbinom{13}{4}\dbinom{13}{1}\dbinom{13}{3} = 3421322190$ \\
+	    $P(A) = \dfrac{3421322190}{635013559600} = 0.00539$
+	 \item
+	    No, by the results above, there is a higher probability for hands where the other
+	    suits are split 2 and 2. 
+	\end{enumerate}
+
+      %14
+      \item $\dbinom{10+36-1}{36} = \dfrac{45!}{36!9!} = 886163135$
+      
+      %15
+      \item 
+	Equation 1.2-2 states that number of distinguishable permutations of $n$ objects when $n_1$ 
+	are similar, $n_2$ are similar, ...., $n_s$ are similar (where $n_1+n_2+\cdots+n_s = n$)
+	is equal to:
+	$$ \dbinom{n}{n_1,n_2,\cdots,n_s} = \dfrac{n!}{n_1!n_2!\cdots n_s!} $$
+
+	We can arrive at this equation by applying the multiplication rule for each of the $n_s$ 
+	subsets:
+	$$\dbinom{n}{n_1}\cdot\dbinom{n-n_1}{n_2}\cdots\dbinom{n-n_1-\cdots-n_{s-1}}{n_s}$$
+	Expanding this out:
+	$$\dfrac{n!}{n_1!(n-n_1)!}\cdot\dfrac{(n-n_1)!}{n_2!(n-n_1-n_2)!}\cdots\dfrac{(n-n_1-n_2-\cdots-n_{s-1})!}{n_s!(n-n_1-n_2-\cdots-n_s)!}$$
+	
+	We can see that the numerator of every factor after the first cancels out with part of the
+	denominator of the factor before it. Also, the denominator of the last factor reduces to
+	$n_s!(0!) = n_s!$ since by definition $n_1+n_2+\cdots+n_s = n$. 
+	
+	Therefore, the previous expression reduces to:
+	$$\dfrac{n!}{n_1!n_2!\cdots n_s!}$$
+	
+      %16
+      \item
+	$N(S) = \dbinom{52}{9} = 3679075400$
+	\begin{enumerate}
+	 \item
+	    $N(A) = \dbinom{19}{3} \cdot \dbinom{33}{6} = 1073233392$ \\
+	    $P(A) = \dfrac{1073233392}{3679075400} = 0.2917$
+	 \item 
+	    $N(A) = \dbinom{19}{3}\cdot\dbinom{10}{2}\cdot\dbinom{7}{1}\cdot\dbinom{5}{1}\cdot\dbinom{6}{2} = 22892625$ \\
+	    $P(A) = \dfrac{22892625}{1073233392} = 0.02133$
+	\end{enumerate}
+
+      %17
+      \item
+	$N(S) = \dbinom{52}{5} = 2598960$
+	\begin{enumerate}
+	 \item 
+	    $N(A) = \dbinom{13}{1}\dbinom{12}{1}\dbinom{4}{1} = 624$ \\
+	    $P(A) = \dfrac{624}{2598960} = 0.00024$
+	 \item 
+	    $N(A) = \dbinom{13}{1}\dbinom{4}{3}\dbinom{12}{1}\dbinom{4}{2} = 3744$ \\
+	    $P(A) = \dfrac{3744}{2598960} = 0.00144$
+	 \item
+	    $N(A) = \dbinom{13}{1}\dbinom{4}{3}\dbinom{12}{2}\dbinom{4}{1}^2 = 54912$ \\
+	    $P(A) = \dfrac{54912}{2598960} = 0.02113$
+	 \item
+	    $N(A) = \dbinom{13}{2}\dbinom{4}{2}^2\dbinom{11}{1}\dbinom{4}{1} = 123552$ \\
+	    $P(A) = \dfrac{123552}{2598960} = 0.04754$
+	 \item
+	    $N(A) = \dbinom{13}{1}\dbinom{4}{2}\dbinom{12}{3}\dbinom{4}{1}^3 = 1098240$ \\
+	    $P(A) = \dfrac{1098240}{2598960} = 0.4226$
+	\end{enumerate}
+      \end{enumerate}
+      
+      
+      Section 1.3
+      \begin{enumerate}
+        %1
+	\item 
+	  \begin{enumerate}
+	    \item $P(B_1) = \dfrac{5000}{1000000} = 0.005$
+	    \item $P(A_1) = \dfrac{78515}{1000000} = 0.078515$
+	    \item $P(A_1 | B_2) = \dfrac{73630}{995000} = 0.074$
+	    \item $P(B_1 | A_1) = \dfrac{4885}{78515} = 0.0622$
+	    \item 
+	      Part (c) says that there is a 7.4\% probability of a positive test result given
+	      that the person is not carrying the AIDS virus. Part (d) says there is a 6.22% 
+	      probability of a carrying the AIDS virus given that the test result was positive. 
+	  \end{enumerate}
+	  \addtocounter{enumi}{1}
+  
+	%3
+	\item
+	  \begin{enumerate}
+	    \item $P(A_1 \cap B_1) = \dfrac{5}{35} = 0.1429$
+	    \item $P(A_1 \cup B_1) = \dfrac{12 + 19 - 5}{35} = \dfrac{26/35} = 0.7429$
+	    \item $P(A_1 | B_1) = \dfrac{5}{19} = 0.2632$
+	    \item $P(B_2 | A_2) = \dfrac{9}{23} = 0.3913$
+	    \item
+	      The event of a student being right-eye-dominant is $A_2$. So if all we can observe
+	      is which thumb is on top, left ($B_1$) or right ($B_2$), we choose the one which
+	      gives us the highest probability of $A_2$.
+	      $P(A_2 | B_1) = \dfrac{14}{19} = 0.7368$ \\
+	      $P(A_2 | B_2) = \dfrac{9}{16} = 0.5625$ \\
+	      
+	      Based on the conditional probabilities, we have a better chance of selecting a 
+	      right-eye-dominant student given that their left thumb is on top. 
+	  \end{enumerate}
+
+	%4
+	\item
+	  \begin{enumerate}
+	    \item $P(H_1) \cdot P(H_2 | H_1) = \dfrac{13}{52} \cdot \dfrac{12}{51} = 0.0588$
+	    \item $P(H_1) \cdot P(C_2 | H_1) = \dfrac{13}{52} \cdot \dfrac{13}{51} = 0.0637$
+	    \item We denote drawing a heart first as $H_1$, drawing an ace first 
+	      \begin{align*}
+		P(H_1 \cap A_2) &= P(H_1 \cap A_1 \cap A_2) + P(H_1 \cap A_1' \cap A_2) \\
+		&= P(H_1)\cdot P(A_1|H_1)\cdot P(A_2|H_1 \cap A_1) 
+		  + P(H_1)\cdot P(A_1'|H_1)\cdot P(A_2|H_1 \cap A_1') \\
+		&= \dfrac{13}{52}\cdot\dfrac{1}{13}\cdot\dfrac{3}{51} 
+		+ \dfrac{13}{52}\cdot\dfrac{12}{13}\cdot\dfrac{4}{51} \\
+		&= 0.01923
+	      \end{align*}
+	  \end{enumerate}
+	  \addtocounter{enumi}{1}
+	  
+	%6
+	\item 
+	  Let H = event that at least one parent had some heart disease \\
+	  Let D = event that randomly selected man died of some heart disease \\
+	  
+	  We are looking for $P(D|H') = \dfrac{P(D \cap H')}{P(H')} 
+	  = \dfrac{\dfrac{110}{982}}{\dfrac{648}{982}} = \dfrac{110}{648} = 0.1698$
+	  \addtocounter{enumi}{4}
+	  
+	%11
+	\item 
+	  \begin{enumerate}
+	   \item $365^r$
+	   \item $\perm{365}{r} = \dfrac{365!}{(365-r)!}$
+	   \item It would be 1 minus the probability of everyone having different birthdays which
+	      is part (b) divided by part (a): $1 - \dfrac{\perm{365}{r}}{365^r}$
+	   \item 
+	      $1 - \dfrac{\perm{365}{r}}{365^r} = .5 \rightarrow r \approx 23$ \\
+	      
+	      Yes, this number is suprisingly small. In a small room there is already a 50\%
+	      chance of two people with the same birthday.
+	  \end{enumerate}
+	  
+	%12
+	\item
+	  \begin{enumerate}
+	    \item 
+	      If you draw first: \\
+		$P(B_1) = \dfrac{1}{18} = 0.0556$ 
+		
+	      If you draw fifth: \\
+	      \begin{align*}
+		&P(R_1 \cap R_2 \cap R_3 \cap R_4 \cap B_5) \\
+		&= P(R_1)\cdot P(R_2|R_1)\cdot P(R_3|R_1 \cap R_2)
+		  P(R_4|R_1 \cap R_2 \cap R_3)\cdot P(B_5|R_1 \cap R_2 \cap R_3 \cap R_4) \\
+		&= \dfrac{17}{18}\cdot\dfrac{16}{17}\cdot\dfrac{15}{16}\cdot\dfrac{14}{15}\cdot\dfrac{1}{14} \\
+		&= 0.0556
+	      \end{align*}
+	      
+	      If you draw last: \\
+	      \begin{align*}
+	       &P(R_1 \cap R_2 \cap \cdots \cap R_{17} \cap B_{18}) \\
+	       &= P(R_1)P(R_2|R_1)\cdots P(R_{17}|R_1 \cap R_2 \cap \cdots \cap R_{16}) 
+		P(B_{18}|R_1 \cap R_2 \cap \cdots \cap R_{17}) \\
+	       &= \dfrac{17}{18} \cdot \dfrac{16}{17} \cdots \dfrac{1}{2} \cdot \dfrac{1}{1} \\
+	       &= 0.0556
+	      \end{align*}
+
+	      You have the same chance of drawing the blue pebble regardless which position we choose.
+	    \item 
+	      If you draw first: \\
+		$P(B_1) = \dfrac{2}{18} = 0.1111$ 
+		
+	      If you draw fifth: \\
+	      \begin{align*}
+		&P(R_1 \cap R_2 \cap R_3 \cap R_4 \cap B_5) \\
+		  &+ P(B_1 \cap R_2 \cap R_3 \cap R_4 \cap B_5) \\
+		  &+ P(R_1 \cap B_2 \cap R_3 \cap R_4 \cap B_5) \\
+		  &+ P(R_1 \cap R_2 \cap B_3 \cap R_4 \cap B_5) \\
+		  &+ P(R_1 \cap R_2 \cap R_3 \cap B_4 \cap B_5) \\
+		&= \dfrac{16}{18}\cdot\dfrac{15}{17}\cdot\dfrac{14}{16}\cdot\dfrac{13}{15}\cdot\dfrac{2}{14} \\
+		  &+ 4 \cdot 
+		    \left(\dfrac{16}{18}\cdot\dfrac{15}{17}\cdot\dfrac{14}{16}\cdot\dfrac{2}{15}\cdot\dfrac{1}{14}\right) \\
+		&= 0.1765
+	      \end{align*}
+	      
+	      If you draw last, the probability reduces to the probability of drawing 1 blue pebble
+	      out of the 18 pebbles:$\dfrac{1}{18} = 0.0556$. 
+	      
+	      Therefore, in the case of 2 blue pebbles, I choose to draw 5th. 
+	  \end{enumerate}
+	  \addtocounter{enumi}{1}
+	  
+	%14
+	\item 
+	  \begin{enumerate}
+	   \item $P(A_1) = \dfrac{7+11+12}{100} = 0.3$
+	   \item $P(A_3 \cap B_2) = \dfrac{9}{100} = 0.09$
+	   \item $P(A_2 \cup B_3) = \dfrac{11+21+9+12+7}{100} = 0.6$
+	   \item $P(A_1 | B_2) = \dfrac{11}{11+21+9} = 0.2683$
+	   \item $P(B_1 | A_3) = \dfrac{13}{13+9+7} = 0.4483$
+	  \end{enumerate}
+	  \addtocounter{enumi}{1}
+	  
+	%16
+	\item 
+	  We define:\\
+	    RA as drawing a red chip from bowl A \\
+	    RB as drawing a red chip from bowl B \\
+	    WA as drawing a white chip from bowl A 
+	    
+	  \begin{align*}
+	    P(RB) &= P(RA)\cdot P(RB|RA) + P(WA)\cdot P(RB|WA) \\
+		  &= \dfrac{3}{5}\cdot\dfrac{5}{8} + \dfrac{2}{5}\cdot\dfrac{4}{8} \\
+		  &= 0.575
+	  \end{align*}
+
+      \end{enumerate}
+ 
+\end{document}
