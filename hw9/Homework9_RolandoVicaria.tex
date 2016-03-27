@@ -1,0 +1,344 @@
+\documentclass{article}
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    \newcommand\todo[1]{\textbf{TODO: #1}}% 
+    \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+    \newcommand\seteq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\small\sffamily set}}}{=}}}
+    
+    \title{Homework 9}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    \textbf{Section 3.3}
+    \begin{enumerate}
+     %1
+     \item 
+      \begin{enumerate}
+       %a
+       \item 
+	$P(0.53 < Z \le 2.06) = \Phi(2.06) - \Phi(0.53) = 0.9803 - 0.7019 = 0.2784$
+       
+       %b
+       \item 
+	$P(-0.79 \le Z < 1.52) = \Phi(1.52) - \Phi(-0.79) = 0.9357 - 0.2148 = 0.7209$
+       
+       %c
+       \item
+	$P(Z > -1.77) = \Phi(1.77) = 0.9616$
+       
+       %d
+       \item
+	$P(Z > 2.89) = 0.0019$
+       
+       %e
+       \item
+	$P(|Z| < 1.96) = P(-1.96 < Z < 1.96) = \Phi(1.96) - P(Z > 1.96) = 0.9750 - 0.0250 = 0.95$
+       
+       %f
+       \item
+	$P(|Z| < 1) = P(-1 < Z < 1) = \Phi(1) - P(Z > 1) = 0.8413 - 0.1587 = 0.6826$
+       
+       %g
+       \item
+	$P(|Z| < 2) = P(-2 < Z < 2) = \Phi(2) - P(Z > 2) = 0.9772 - 0.0228 = 0.9544$
+       
+       %h
+       \item
+	$P(|Z| < 3) = P(-3 < Z < 3) = \Phi(3) - P(Z > 3) = 0.9987 - 0.0013 = 0.9974$
+      \end{enumerate}
+     \addtocounter{enumi}{1}
+     
+     %3
+     \item
+      \begin{enumerate}
+       %a
+       \item
+	$P(Z \ge c) = 0.025$ \\
+	$c = 1.96$
+       
+       %b
+       \item
+	$P(|Z| \le c) = 0.95$ \\
+	$c = 1.96$
+       
+       %c
+       \item
+	$P(Z > c) = 0.05)$ \\
+	$c = 1.645$
+       
+       %d
+       \item
+	$P(|Z| \le c) = 0.90$ \\
+	$c = 1.645$
+      \end{enumerate}
+     
+     %4
+     \item
+      \begin{enumerate}
+       %a
+       \item
+	$z_{0.10} = 1.282$
+       
+       %b
+       \item
+	$-z_{0.05} = -1.645$
+       
+       %c
+       \item
+	$-z_{0.0485} = -1.66$
+       
+       %d
+       \item
+	$z_{0.9656} = -1.82$
+      \end{enumerate}
+     
+     %5
+     \item
+      $X \sim N(6,25)$
+      \begin{enumerate}
+       %a
+       \item 
+	$P(6 \le X \le 12) = P(0 \le Z \le 1.2) = \Phi(1.2) - \Phi(0) = 0.8849 - 0.5 = 0.3849$
+       
+       %b
+       \item 
+	$P(0 \le X \le 8) = P(-1.2 \le Z \le 0.4) = \Phi(0.4) - \Phi(-1.2) 
+	    = 0.6554 - 0.1151 = 0.5403$
+       
+       %c
+       \item 
+	$P(-2 < X \le 0) = P(-1.6 < Z \le -1.2) = \Phi(-1.2) - \Phi(-1.6) 
+	    = 0.1151 - 0.0548 = 0.0603$
+       
+       %d
+       \item 
+	$P(X > 21) = P(Z > 3) = 0.0013$
+       
+       %e
+       \item 
+	$P(|X - 6| < 5) = P(-1 < Z < 1) = 0.6826$
+       
+       %f
+       \item 
+	$P(|X - 6| < 10) = P(-2 < Z < 2) = 0.9544$
+       
+       %g
+       \item 
+	$P(|X - 6| < 15) = P(-3 < Z < 3) = 0.9974$
+       
+       %h
+       \item 
+	$P(|X - 6| < 12.41) = P(-2.482 < Z < 2.482) = \Phi(2.482) - \Phi(-2.482) 
+	    = 0.9934 - 0.0066 = 0.9868$
+      \end{enumerate}
+     
+     %6
+     \item
+      $M(t) = exp(166t + 200t^2)$ \\
+      $X \sim N(166, 400)$
+      \begin{enumerate}
+       %a
+       \item
+	$\mu = 166$
+       
+       %b
+       \item
+	$\sigma^2 = 400$
+       
+       %c
+       \item
+	$P(170 < X < 200) = P(0.2 < Z < 1.7) = \Phi(1.7) - \Phi(0.2) 
+	    = 0.9554 - 0.5793 = 0.3761$
+       
+       %d
+       \item
+	$P(148 \le X \le 172) = P(-0.9 \le Z \le 0.3) = \Phi(0.3) - \Phi(-0.9) 
+	    = 0.6179 - 0.1841 = 0.4338$
+      \end{enumerate}
+     
+     %7
+     \item
+      $X \sim N(650, 625)$
+      \begin{enumerate}
+       %a
+       \item 
+	$P(600 \le X < 660) = P(-2 \le Z < 0.4) = \Phi(0.4) - \Phi(-2) = 0.6554 - 0.0228 = 0.6326$
+       
+       %b
+       \item
+	$P(|X - 650| \le c) = 0.9544$ \\
+	$c = 50$
+      \end{enumerate}
+     
+     %8
+     \item
+      Since $X \sim N(\mu, \sigma^2)$, then the PDF of $X$ is 
+	$$f(x) = \dfrac{1}{\sigma \sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]$$
+	
+      In order to find the points of inflection, we have to find the values of $x$ where the second 
+      derivative of the PDF is equal to 0. We start by first computing the first derivative of 
+      the PDF:
+	\begin{align*}
+	  \dfrac{d}{dx}\left(\dfrac{1}{\sigma \sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\right) 
+	    &=\dfrac{1}{\sigma\sqrt{2\pi}} \dfrac{d}{dx}\left(exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\right) \\
+	  &=\dfrac{1}{\sigma\sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right] 
+		    \dfrac{d}{dx}\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right)\\
+	  &=\dfrac{1}{\sigma\sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right] 
+		    \left(-\dfrac{x-\mu}{\sigma^2}\right)\\
+	  &=-\dfrac{x-\mu}{\sigma^3\sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right] \\
+	\end{align*}
+	
+      We then use that result to calculate the second derivative of the PDF:
+	\begin{align*}
+	 &\dfrac{d^2}{dx^2}\left(\dfrac{1}{\sigma \sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\right) \\
+	  &= \dfrac{d}{dx}\left(-\dfrac{x-\mu}{\sigma^3\sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\right) \\
+	  &= -\dfrac{x-\mu}{\sigma^3\sqrt{2\pi}} \dfrac{d}{dx}\left(exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\right)
+	      + exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right] \dfrac{d}{dx}\left(-\dfrac{x-\mu}{\sigma^3\sqrt{2\pi}}\right) \\
+	  &= \dfrac{(x-\mu)^2}{\sigma^5\sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right] 
+	      - \dfrac{1}{\sigma^3 \sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right] \\
+	  &= \dfrac{(x-\mu)^2 - \sigma^2}{\sigma^5\sqrt{2\pi}} exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]
+	\end{align*}
+
+      We can see that this expression can only be equal to 0 when the first factor is 0,
+      since the $exp[...]$ factor is always positive. Therefore, we set the first factor
+      equal to 0 and solve for x:
+	\begin{align*}
+	 \dfrac{(x-\mu)^2 - \sigma^2}{\sigma^5\sqrt{2\pi}} &\seteq 0 \\
+	 (x-\mu)^2 - \sigma^2 &= 0 \\
+	 (x - \mu)^2 &= \sigma^2 \\
+	 x - \mu &= \pm \sigma \\
+	 x &= \mu \pm \sigma
+	\end{align*}
+     
+     %9
+     \item
+      $W = X^2$
+      \begin{enumerate}
+       %a
+       \item 
+	$X \sim N(0,4)$ \\
+	Cumulative distribution function of $W$:
+	$$G(w) = P(W \le w) = P(X^2 \le w) = P(-\sqrt{w} \le X \le \sqrt{w})$$
+	
+	Let's integrate the PDF of $X$, a normal random variable with $\mu = 0$ and $\sigma = 2$:
+	$$G(w) = \mathlarger{\int}_{-\sqrt{w}}^{\sqrt{w}}
+	  {\dfrac{1}{2\sqrt{2\pi}}exp\left(-\dfrac{x^2}{8}\right)dx}$$
+	  
+	We do the following change of variables: Let $x = \sqrt{y} = y^{1/2}$, so 
+	$dx = \dfrac{1}{2}y^{-1/2}dy = \dfrac{1}{2\sqrt{y}}dy$. Therefore, $x^2 = y$ and
+	$x = 0 \implies y = 0$ and $x = \sqrt{w} \implies y = w$.
+	
+	This gives us:
+	$$G(w) = 2 \mathlarger{\int}_0^{w}{\dfrac{1}{2\sqrt{2\pi}}
+		exp\left(-\dfrac{y}{8}\right)\left(\dfrac{1}{2\sqrt{y}}\right)dy}$$
+		
+	$$G(w) = \mathlarger{\int}_0^{w}{\dfrac{1}{\sqrt{8}\sqrt{\pi}}y^{\frac{1}{2} - 1}
+		exp\left(-\dfrac{y}{8}\right)dy}$$
+		
+	We take the derivative of $G(w)$ to get the probability density function $g(w)$:
+	$$g(w) = \dfrac{1}{\sqrt{8}\sqrt{\pi}}y^{\frac{1}{2} - 1}exp\left(-\dfrac{y}{8}\right)$$
+	
+	which is the gamma distribution PDF with $\alpha=\dfrac{1}{2}$ and $\theta=8$.
+	
+       %b
+       \item
+	$X \sim N(0,\sigma^2)$ \\
+	Cumulative distribution function of $W$:
+	$$G(w) = P(W \le w) = P(X^2 \le w) = P(-\sqrt{w} \le X \le \sqrt{w})$$
+	
+	Let's integrate the PDF of $X$, a normal random variable with $\mu = 0$ and variance $\sigma^2$:
+	$$G(w) = \mathlarger{\int}_{-\sqrt{w}}^{\sqrt{w}}
+	  {\dfrac{1}{\sigma\sqrt{2\pi}}exp\left(-\dfrac{x^2}{2\sigma^2}\right)dx}$$
+	  
+	We do the following change of variables: Let $x = \sqrt{y} = y^{1/2}$, so
+	$dx = \dfrac{1}{2}y^{-1/2}dy = \dfrac{1}{2\sqrt{y}}dy$. Therefore, $x^2 = y$ and
+	$x = 0 \implies y = 0$ and $x = \sqrt{w} \implies y = w$.
+	
+	This gives us:
+	$$G(w) = 2 \mathlarger{\int}_0^{w}{\dfrac{1}{\sigma\sqrt{2\pi}}
+	      exp\left(-\dfrac{y}{2\sigma^2}\right)\left(\dfrac{1}{2\sqrt{y}}\right)dy}$$
+	      
+	$$G(w) = \mathlarger{\int}_0^{w}{\dfrac{1}{\sqrt{2\sigma^2}\sqrt{\pi}}y^{\frac{1}{2}-1}
+	      exp\left(-\dfrac{y}{2\sigma^2}\right)dy}$$
+	      
+	We take the derivative of $G(w)$ to get the probability density function $g(w)$:
+	$$g(w) = \dfrac{1}{\sqrt{2\sigma^2}\sqrt{\pi}}y^{\frac{1}{2} - 1}exp\left(-\dfrac{y}{2\sigma^2}\right)$$
+	
+	which is the gamma distribution PDF with $\alpha=\dfrac{1}{2}$ and $\theta = 2\sigma^2$.
+      \end{enumerate}
+     \addtocounter{enumi}{1}
+     
+     %11
+     \item
+      $X \sim N(21.37, 0.16)$
+      \begin{enumerate}
+       %a
+       \item 
+	$P(X > 22.07) = P(Z > 1.75) = 0.0401$
+       
+       %b
+       \item
+	First we compute the probability of a mint weighing less than 20.857 grams, 
+	  $$P(X < 20.857) = P(Z < -1.2825) = 0.1003$$
+	  
+	The distribution of $Y$ is binomial with $n=15$ and $p=0.1003$. We wish to find $P(Y \le 2)$:
+	  \begin{align*}
+	   P(Y \le 2) &= P(Y = 0) + P(Y = 1) + P(Y = 2) \\
+	    &= (1 - 0.1003)^{15} + 15(0.1003)(1 - 0.1003)^14 + 105(0.1003^2)(1 - 0.1003)^13 \\
+	    &= 0.8148
+	  \end{align*}
+      \end{enumerate}
+     \addtocounter{enumi}{3}
+     
+     %15
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	If $X \sim N(12.1, \sigma^2)$, then $Z = \frac{X - 12.1}{\sigma}$. Therefore, we can rewrite
+	the problem so that we're looking for $c$ such that $P(Z < c) = 0.01$. From Table Va, we know
+	that this is the value $-z_{0.01} = -2.326$. Now we can solve for $\sigma$:
+	  \begin{align*}
+	    -2.326 &= \dfrac{12 - 12.1}{\sigma} \\
+	    \sigma &= \dfrac{12 - 12.1}{-2.326} \\
+	      &= 0.04299
+	  \end{align*}
+       
+       %b
+       \item
+	\begin{align*}
+	  -2.326 &= \dfrac{12 - \mu}{0.05} \\
+	  12 - \mu &= -0.1163 \\
+	  \mu &= 12.1163
+	\end{align*}
+
+       
+      \end{enumerate}
+    \end{enumerate}
+\end{document}
