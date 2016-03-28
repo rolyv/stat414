@@ -170,9 +170,49 @@
        \item
 	$f_x(x) = \dfrac{7!}{x!(7-x)!}(0.78)^x(0.22)^{7-x}, x \le 7$
       \end{enumerate}
-
+      
+     %9
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$f(x,y) = \mfrac{15!}{x!y!(15-x-y)!}\mfrac{6}{10}^x\mfrac{3}{10}^y\mfrac{1}{10}^{15-x-y}
+	  , 0 \le x+y \le 15$
+       
+       %b
+       \item
+	Based on the shape of the region, they cannot be independent because the region is not
+	rectangular.
+	
+	\begin{figure}[h!]
+	  \centering
+	  \includegraphics[scale=.6,keepaspectratio=true]{./images/scatterPlot_XandY_lessThanEq_15.png}
+	  % scatterPlot_XandY_lessThanEq_15.png: 377x254 pixel, 96dpi, 9.97x6.72 cm, bb=0 0 283 190
+	\end{figure}
+       
+       %c
+       \item
+	$f(10,4) = \mfrac{15!}{10!4!1!}\mfrac{6}{10}^{10}\mfrac{3}{10}^4\mfrac{1}{10}^1
+	  \approx 0.07354$
+       
+       %d
+       \item
+	$X \sim b(15, 0.6)$
+       
+       %e
+       \item
+	\begin{align*}
+	  P(X \le 11) &= 1 - P(X > 11) \\
+	    &= 1 - [P(X = 12) + P(X = 13) + P(X = 14) + P(X = 15)] \\
+	    &= 1 - \left[\dfrac{15!}{12!3!}(.6)^{12}(.4)^3 + \dfrac{15!}{13!2!}(.6)^{13}(.4)^2
+	      + \dfrac{15!}{14!1!}(.6)^{14}(.4)^{1} + \dfrac{15!}{15!0!}(.6)^{15}(.4)^0 \right] \\
+	    &= 1 - 0.0905 \\
+	    &= 0.9095
+	\end{align*}	
+      \end{enumerate}
     \end{enumerate}
     
+    \newpage
     \textbf{Section 4.2}
     \begin{enumerate}
      %1
@@ -273,9 +313,6 @@
       \begin{align*}
        y = \mu_y - \mu_x\mfrac{\sigma_{xy}}{\sigma_x^2} + \mfrac{\sigma_{xy}}{\sigma_x^2}x
       \end{align*}
-
-
-
      \addtocounter{enumi}{1}
      
      %7
