@@ -1,0 +1,353 @@
+\documentclass{article}
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    \usepackage{multirow}
+        
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    \newcommand\todo[1]{\textbf{TODO: #1}}% 
+    \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+    \newcommand\seteq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\small\sffamily set}}}{=}}}
+    \newcommand\mfrac[2]{\left(\dfrac{#1}{#2}\right)}
+    \newcommand\lint{\mathlarger{\int}}
+    \newcommand\lsum{\mathlarger{\sum}}
+    \newcommand\lprod{\mathlarger{\prod}}
+    \newcommand\myskip[1]{\addtocounter{enumi}{#1}}
+    
+    \title{Homework 13}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    \textbf{Section 5.3}
+    \begin{enumerate}
+     %1
+     \item
+      \begin{enumerate}
+       %a
+       \item
+	$P(X_1 = 3, X_2 = 5) = P(X_1 = 3)P(X_2 = 5) = \mfrac{2^3e^{-2}}{3!}\mfrac{3^5e^{-3}}{5!}
+	  = 0.01819$
+       
+       %b
+       \item
+	$P(X_1 + X_2 = 1) = P(X_1=1, X_2=0) + P(X_1=0, X_2=1) = \\
+	  P(X_1=1)P(X_2=0) + P(X_1=0)P(X_2=1) = \mfrac{2^1e^{-2}}{1!}\mfrac{3^0e^{-3}}{0!} 
+	  + \mfrac{2^0e^{-2}}{0!}\mfrac{3^1e^{-3}}{1!} \\
+	  = 0.03369$
+      \end{enumerate}
+     \myskip{1}
+     
+     %3
+     \item
+      \begin{enumerate}
+       %a
+       \item
+	$P(0.5 < X_1 < 1 \text{ and } 0.4 < X_2 < 0.8) = P(0.5 < X_1 < 1)P(0.4 < X_2 < 0.8) \\
+	= \left[\lint_{0.5}^1 { 2x_1 dx_1 }\right]\left[\lint_{0.4}^{0.8} {4x_2^3 dx_2}\right] 
+	= x_1^2 \Big|_{0.5}^1 \cdot x_2^4 \Big|_{0.4}^{0.8} = (1 - 0.25)(0.4096 - 0.0256)
+	= 0.288$ 
+	
+       %b
+       \item
+	$E(X_1^2X_2^3) = E(X_1^2)E(X_2^3) = \left[\lint_0^1 {x_1^2 2x_1 dx}\right]
+	\left[\lint_0^1 {x_2^3 4x_2^3 dx}\right] = \dfrac{x_1^4}{2} \Big|_0^1 \cdot 
+	\dfrac{4x_2^7}{7} \Big|_0^1 = \dfrac{1}{2}\cdot \dfrac{4}{7} = \dfrac{2}{7}$
+      \end{enumerate}
+     \myskip{1}
+     
+     %5
+     \item
+      pmf of $Y$:
+      \begin{center}
+	\begin{tabular}{c | c | c | c | c | c}
+	  $y = x_1 + x_2$ & 2 & 3 & 4 & 5 & 6 \\
+	  \hline	    
+	  $g(y)$ & 1/36 & 4/36 & 10/36 & 12/36 & 9/36 \\ 
+	\end{tabular}
+      \end{center}
+      
+      Mean and variance \#1:\\
+      $E(Y) = \lsum_y {y g(y)} = 2\mfrac{1}{36} + 3\mfrac{4}{36} + 4\mfrac{10}{36} + 5\mfrac{12}{36}
+      + 6\mfrac{9}{36} = \dfrac{14}{3}$ \\
+      $E(Y^2) = \lsum_y {y^2 g(y)} = 4\mfrac{1}{36} + 9\mfrac{4}{36} + 16\mfrac{10}{36} + 25\mfrac{12}{36}
+      + 36\mfrac{9}{36} = \dfrac{206}{9}$ \\
+      $Var(Y) = E(Y^2) - [E(Y)]^2 = \dfrac{10}{9}$ \\
+      
+      Mean and variance \#2: \\
+      $E(Y) = E(X_1 + X_2) = E(X_1) + E(X_2) = 2E(X)
+	= 2\left[1\mfrac{1}{6} + 2\mfrac{2}{6} + 3\mfrac{3}{6}\right] \\ 
+	= 2\mfrac{14}{6} = \dfrac{14}{3}$ \\
+      $Var(Y) = Var(X_1) + Var(X_2) = 2Var(X) = 2\left[\lsum_x{(x-14/6)^2 f(x)}\right] \\
+	= 2\left[\left(1-\dfrac{14}{6}\right)^2\mfrac{1}{6} 
+	  + \left(2 - \dfrac{14}{6}\right)^2\mfrac{2}{6}
+	  + \left(3 - \dfrac{14}{6}\right)^2\mfrac{3}{6}\right] = \dfrac{10}{9}$
+     
+     %6
+     \item
+      The mean of $X_1$ and $X_2$,
+      \begin{align*}
+       E(X_1) = E(X_2) = E(X) = \lint_0^1{x \cdot 6x(1-x) dx} = \dfrac{1}{2}
+      \end{align*}
+      
+      Therefore,
+      \begin{align*}
+       E(Y) = E(X_1 + X_2) = E(X_1) + E(X_2) = 2E(X) = 2(1) = 2
+      \end{align*}
+
+      The variance of $X_1$ and $X_2$,
+      \begin{align*}
+       Var(X_1) = Var(X_2) = Var(X) = \lint_0^1{x^2 \cdot 6x(1-x) dx} = \dfrac{6}{20}
+      \end{align*}
+
+      Therefore,
+      \begin{align*}
+       Var(Y) = Var(X_1 + X_2) = Var(X_1) + Var(X_2) = 2Var(X) = 2\mfrac{6}{20} = \dfrac{6}{10}
+      \end{align*}
+     \myskip{4}
+     
+     %11
+     \item
+      \begin{enumerate}
+       %a
+       \item 	
+	\begin{align*}
+	  P(X_1=2, X_2=2, X_3=5) &= P(X_1 = 2)P(X_2 = 2)P(X_3 = 5) \\
+	    &= \left[\dbinom{4}{2}\mfrac{1}{2}^2\mfrac{1}{2}^2\right]
+	      \left[\dbinom{6}{2}\mfrac{1}{3}^2\mfrac{2}{3}^4\right]
+	      \left[\dbinom{12}{5}\mfrac{1}{6}^5\mfrac{5}{6}^7\right] \\
+	    &= 0.00351
+	\end{align*}
+       
+       %b
+       \item
+	\begin{align*}
+	  E(X_1 X_2 X_3) &= E(X_1)E(X_2)E(X_3) \\
+	    &= 4\mfrac{1}{2} \cdot 6\mfrac{1}{3} \cdot 12\mfrac{1}{6} \\
+	    &= 8
+	\end{align*}
+       %c
+       \item
+	\begin{align*}
+	  E(Y) &= E(X_1 + X_2 + X_3) \\
+	    &= E(X_1) + E(X_2) + E(X_3) \\
+	    &= 3(2) \\
+	    &= 6
+	\end{align*}
+	
+	\begin{align*}
+	  Var(Y) &= Var(X_1 + X_2 + X_3) \\
+	    &= Var(X_1) + Var(X_2) + Var(X_3) \\
+	    &= 4\mfrac{1}{2}\mfrac{1}{2} + 6\mfrac{1}{3}\mfrac{2}{3} + 12\mfrac{1}{6}\mfrac{5}{6} \\
+	    &= 4
+	\end{align*}
+      \end{enumerate}
+     
+     %12
+     \item
+      
+      \begin{align*}
+       P(1 < \text{min}X_i) &= P(1 < X_1, 1 < X_2, 1 < X_3) \\
+	&= P(1 < X_1)P(1 < X_2)P(1 < X_3) \\
+	&= [1 - P(X_1 \le 1)][1 - P(X_2 \le 1)][1 - P(X_3 \le 1)] \\
+	&= (e^{-1})^3 \\
+	&= e^{-3} \approx 0.04979
+      \end{align*}
+     \myskip{4}
+     
+     %17
+     \item
+      We're given that,
+      $$\sigma_X^2 = 8100,\ \ \sigma_Y^2 = 10000,\ \ \sigma_{X+Y}^2 = 20000$$
+      
+      Since, $Var(X+Y)$ is not equal to the sum of $Var(X)$ and $Var(Y)$, we know they must be 
+      correlated. We can find the correlation coefficient, by solving the following for $rho_{XY}$,
+      $$\sigma_{X+Y}^2 = \sigma_X^2 + \sigma_Y^2 + \rho_{XY} \sigma_X \sigma_Y$$
+      $$\rho_{XY} = \dfrac{20000-8100-10000}{90(100)} = 0.2111$$
+      
+      We can define $W = X+500$, and $T = 1.08Y$, which are linear combinations of $X$ and $Y$, respectively.
+      Thus, to compute, $Var(W)$ and $Var(T)$,
+      $$Var(W) = Var(X+500) = Var(X) = 8100$$
+      $$Var(T) = Var(1.08Y) = 1.08^2 Var(Y) = 11664$$
+      
+      Therefore, we can define $Z = W+T$, and compute its variance as follows,
+      \begin{align*}
+       Var(Z) &= Var(W) + Var(T) + \rho_{XY} \sigma_W \sigma_T \\
+	&= 8100 + 11664 + 0.2111(90)(108) \\
+	&= 21816
+      \end{align*}
+     
+     %18
+     \item
+      Since these are random samples of a gamma distribution with $\alpha = \theta = 2$, then
+      $$E(X_1) = E(X_2) = E(X_3) = E(X) = \alpha \theta$$
+      and,
+      $$Var(X_1) = Var(X_2) = Var(X_3) = Var(X) = \alpha \theta^2$$
+      
+      Therefore,
+      \begin{align*}
+	E(X_1+X_2+X_3) &= E(X_1) + E(X_2) + E(X_3) \\
+	  &= 3(\alpha \theta) \\
+	  &= 3(2)(2) \\
+	  &= 12
+      \end{align*}
+      \begin{align*}
+       Var(X_1 + X_2 + X_3) &= Var(X_1) + Var(X_2) + Var(X_3) \\
+	&= 3(\alpha \theta^2) \\
+	&= 3(2)(2)^2 \\
+	&= 24
+      \end{align*}
+    \end{enumerate}
+    
+    \textbf{Section 5.4}
+    \begin{enumerate}
+     \myskip{1}
+     %2
+     \item 
+      Binomial mgf: $(q + pe^t)^n$
+      
+      We are given that $Y = X_1 + X_2$, where $X_1 \sim b(n_1, p)$ and $X_2 \sim b(n_2, p)$.\\
+      Therefore, $M_{X_1} = (q + pe^t)^{n_1}$ and $M_{X_2} = (q + pe^t)^{n_2}$. 
+      
+      The mgf of $Y$ is 
+      \begin{align*}
+       M_Y(t) &= M_{X_1}(t)M_{X_2}(t) \\
+	&= (q + pe^t)^{n_1}(q + pe^t)^{n_2} \\
+	&= (q + pe^t)^{(n_1 + n_2)}
+      \end{align*}
+      
+      This last line is the mgf of a binomial distribution, $b(n_1+n_2, p)$.
+     
+     %3
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$M_{X_1}(t) = e^{2(e^t - 1)}$,  $M_{X_2}(t) = e^{(e^t - 1)}$,  $M_{X_3}(t) = e^{4(e^t - 1)}$ \\
+	Therefore, 
+	\begin{align*}
+	M_Y(t) &= M_{X_1}(t)M_{X_2}(t)M_{X_3}(t) \\
+	  &= e^{2(e^t - 1)} e^{(e^t - 1)} e^{4(e^t - 1)} \\
+	  &= e^{7(e^t - 1)}
+	\end{align*}
+	
+       %b
+       \item
+	$Y$ has a Poisson distribution with mean 7.
+       
+       %c
+       \item
+	$P(3 \le Y \le 9) = P(Y \le 9) - P(Y \le 2) = 0.830 - 0.030 = 0.800$
+      \end{enumerate}
+     
+     %4
+     \item
+      If we have a random variable, $Y$, equal to the sum of $n$ Poisson random variables with 
+      means $\mu_1, \mu_2, \cdots, \mu_n$, with each having mgf, 
+      $$M_{X_i}(t) = e^{\mu_i(e^t - 1)}$$
+      then by theorem 5.4-1, the moment-generating function,
+      \begin{align*}
+       M_Y(t) &= \lprod_{i=1}^n M_{X_i}(t) \\
+	&= (e^{\mu_1(e^t - 1)})(e^{\mu_2(e^t - 1)})\cdots(e^{\mu_n(e^t - 1)}) \\
+	&= e^{(e^t - 1)\lsum_{i=1}^n {\mu_i}}
+      \end{align*}
+      
+      This last line is the mgf of a Poisson random variable with mean $\lsum_{i=1}^n {\mu_i}$
+     
+     %5
+     \item
+      By Corollary 5.4-2, $W$ has a distribution that is $\chi^2(7)$. Therefore,
+      \begin{align*}
+       P(1.69 < W < 14.07) &= P(W < 14.07) - P(W < 1.69) \\
+	&= 0.95 - 0.025 = 0.925
+      \end{align*}
+     \myskip{2}
+     
+     %8
+     \item
+      We have $h$ mutually independent and identically exponential random variables with mean $\theta$.
+      Each of these $h$ random variables has mgf $M_{X_i}(t) = (1-\theta)^{-1}$. By theorem, 5.4-1,
+      the moment-generating function of $W$ is,
+      \begin{align*}
+       M_W(t) &= \lprod_{i=1}^h M_{X_i}(t) \\
+	&= \lprod_{i=1}^h {(1 - \theta)^{-1}} \\
+	&= ((1 - \theta)^{-1})^h \\
+	&= (1 - \theta)^{-h}
+      \end{align*}
+      
+      This last line is the mgf of a Gamma distribution with parameters $\alpha = h$ and $\theta$.
+     \myskip{5}
+     
+     %14
+     \item
+      $Y = X_1 + X_2 + X_3 \sim Poisson(6)$ \\
+      $P(Y = 7) = \dfrac{6^7 e^{-6}}{7!} = 0.1377$
+     \myskip{1}
+     
+     %16
+     \item
+      $Y = X_1 + X_2 + X_3 + X_4 \sim Poission(8)$ \\
+      $P(Y > 10) = 1 - P(Y \le 10) = 1 - 0.816 = 0.184$
+     \myskip{2}
+     
+     %19
+     \item
+      The sum of the three exponential random variables equates to a gamma random variable
+      with $\alpha = 3$ and $\theta = 2$. Therefore,
+      \begin{align*}
+       P(X \le 6) &= \lint_0^6 {\dfrac{1}{\Gamma(3)2^3} x^2 e^{-x/2} dx} \\
+	&= \dfrac{1}{\Gamma(3)2^3} \lint_0^6 {x^2 e^{-x/2} dx} 
+      \end{align*}
+      
+      Doing integration by parts with $u = x^2$ and $dv = e^{-x/2} dx$. Therefore, $du = 2x dx$
+      and $v = -2e^{-x/2}$
+      
+      \begin{align*}
+	\dfrac{1}{\Gamma(2)2^3} \lint_0^6 {x^2 e^{-x/2} dx} &= \dfrac{1}{\Gamma(3)2^3}
+	    \left[-2x^2e^{-x/2} \Big|_0^6 - \lint_0^6 {-4xe^{-x/2} dx}\right] \\
+	  &= \dfrac{1}{\Gamma(3)2^3} \left[-72e^{-3} + 4\lint_0^6 {xe^{-x/2}dx} \right] 
+      \end{align*}
+      
+      Again doing integration by parts with $u = x$ and $dv = e^{-x/2} dx$. Therefore, $du = dx$
+      and $v = -2e^{-x/2}$
+      
+      \begin{align*}
+       \dfrac{1}{\Gamma(3)2^3} \left[-72e^{-3} + 4\lint_0^6 {xe^{-x/2}dx} \right] &= 
+	    \dfrac{1}{\Gamma(3)2^3}\left\{-72e^{-3} + 4 \left[-2xe^{-x/2} \Big|_0^6 - 
+	      \lint_0^6 {-2e^{-x/2}dx}\right]\right\} \\
+	  &= \dfrac{1}{\Gamma(3)2^3}\left\{-72e^{-3} + 4 \left[-12e^{-3} + 2 
+	      \lint_0^6 {e^{-x/2}dx}\right]\right\} \\
+	  &= \dfrac{1}{\Gamma(3)2^3} \left[-120e^{-3} + 8 \lint_0^6 {e^{-x/2}dx}\right] \\
+	  &= \dfrac{1}{\Gamma(3)2^3} \left[-120e^{-3} - 16(e^{-x/2} \Big|_0^6)\right] \\
+	  &= \dfrac{1}{\Gamma(3)2^3} \left[-120e^{-3} - 16 (e^{-3} - 1)\right] \\
+	  &= \dfrac{1}{16} \left(-136e^{-3} + 16\right) \\
+	  &= -8.5e^{-3} + 1 \approx 0.5768
+      \end{align*}
+
+
+
+    \end{enumerate}
+
+\end{document}

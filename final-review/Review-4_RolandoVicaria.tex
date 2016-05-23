@@ -1,0 +1,73 @@
+\documentclass{article}
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    \usepackage{multirow}
+        
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    \newcommand\todo[1]{\textbf{TODO: #1}}% 
+    \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+    \newcommand\seteq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\small\sffamily set}}}{=}}}
+    \newcommand\mfrac[2]{\left(\dfrac{#1}{#2}\right)}
+    \newcommand\lint{\mathlarger{\int}}
+    \newcommand\lsum{\mathlarger{\sum}}
+    \newcommand\lprod{\mathlarger{\prod}}
+    \newcommand\myskip[1]{\addtocounter{enumi}{#1}}
+    
+    \title{Review Exercises IV}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    \begin{enumerate}
+     %1
+     \item 
+      \todo{come back to this}
+     
+     %2
+     \item
+      A binomial distribution has mgf $(q+pe^t)^n$. 
+      
+      The mgf of $Y$ is the product of the mgf of $X_1$ and $X_2$:
+      $$M_Y(t) = (q+pe^t)^{n_1}\cdot (q+pe^t)^{n_2} = (q+pe^t)^{(n1+n2)}$$
+     
+     %3
+     \item
+     
+     %4
+     \item
+     
+     %5
+     \item
+     
+     %6
+     \item
+     
+     %7
+     \item
+     
+     %8
+     \item
+    \end{enumerate}
+\end{document}

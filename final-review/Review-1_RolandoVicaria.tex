@@ -1,0 +1,198 @@
+\documentclass{article}
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    \usepackage{multirow}
+        
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    \newcommand\todo[1]{\textbf{TODO: #1}}% 
+    \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+    \newcommand\seteq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\small\sffamily set}}}{=}}}
+    \newcommand\mfrac[2]{\left(\dfrac{#1}{#2}\right)}
+    \newcommand\lint{\mathlarger{\int}}
+    \newcommand\lsum{\mathlarger{\sum}}
+    \newcommand\lprod{\mathlarger{\prod}}
+    \newcommand\myskip[1]{\addtocounter{enumi}{#1}}
+    
+    \title{Review Exercises I}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    \begin{enumerate}
+     %1
+     \item
+      $P(A) = 0.3, P(B) = 0.5, P(A \cup B) = 0.7$
+      \begin{enumerate}
+	%a
+	\item
+	 $P(A \cap B) = P(A) + P(B) - P(A \cup B) = 0.3 + 0.5 - 0.7 = 0.1$
+	 
+	%b
+	\item
+	 $P(A^C \cup B^C) = P(A^C) + P(B^C) - P(A^C \cap B^C) = 0.7 + 0.5 - 0.3 = 0.9x$
+	 
+	%c
+	\item
+	 $P(A^C \cap B) = P(B) - P(A \cap B) = 0.5 - 0.1 = 0.4$
+      \end{enumerate}
+     
+     %2
+     \item 
+      $A = \text{actress is present}$ \\
+      $D = \text{stunt double is present}$ \\
+      $P(A) = 0.4$, $P(D) = 0.3$, $P(A \cap D) = 0.05$
+      \begin{enumerate}
+       %a
+       \item 
+	$P(D \cap A^C) = P(D) - P(A \cap D) = 0.3 - 0.05 = 0.25$
+       
+       %b
+       \item
+	$P(A^C \cap D^C) = 1 - P(A \cup D) = 1 - (P(A) + P(D) - P(A \cap D)) = 1 - (0.4 + 0.3 - 0.05)
+	  = 0.35$
+      \end{enumerate}
+     
+     %3
+     \item
+      First, we show that $f(x) > 0$ for $x=0,1,2,\dots$.
+      
+      We are given that $\lambda > 0$, therefore, the factor $\dfrac{1}{1+\lambda}$
+      is always positive. The factor $\dfrac{\lambda}{1+\lambda}$ is also always positive and raised
+      to a non-negative power, the product of two positive numbers is also positive. 
+      
+      Next, we show that $\lsum_{x=0}^{\infty} {f(x)} = 1$
+      
+      We start by rewriting the sum,
+      \begin{align*}
+	\lsum_{x=0}^{\infty}{\dfrac{1}{1+\lambda} \mfrac{\lambda}{1+\lambda}^x} 
+	      &= \dfrac{1}{1+\lambda} \lsum_{x=0}^{\infty}{\mfrac{\lambda}{1+\lambda}^x} \\
+	&= \dfrac{1}{1+\lambda} \left[ \mfrac{\lambda}{1+\lambda}^0 + \mfrac{\lambda}{1+\lambda}^1
+	      + \mfrac{\lambda}{1+\lambda}^2 + \cdots \right] \\
+	&= \dfrac{1}{1+\lambda} \left[ \dfrac{1}{1 - \dfrac{\lambda}{1+\lambda}} \right] \\
+	&= \dfrac{1}{1+\lambda} (1 + \lambda) \\
+	&= 1
+      \end{align*}
+      
+      The third equality comes from applying the formula for sum of an infinite geometric series
+      since $r = \dfrac{\lambda}{1+\lambda}$ is less than 1.
+     
+     %4
+     \item
+      $P(y < 1) = \lint_0^1 {\dfrac{1}{9}y^2 dy} = \dfrac{1}{9} \left[\dfrac{y^3}{3}\right]_0^1
+	 = \dfrac{1}{27}$
+     
+     %5
+     \item
+      $P(y > 1.5) = 1 - P(y < 1.5) = 1 - \lint_0^{1.5}{ye^{-y} dy}$
+      
+      Applying integration by parts, with $u = y$ and $dv = e^{-y}$, we have
+      \begin{align*}
+       \lint_0^{1.5}{ye^{-y} dy} &= -ye^{-y}\Big|_0^{1.5} + \lint_0^{1.5}{e^{-y} dy} \\
+	  &= -1.5e^{-1.5} - e^{-y}\Big|_0^{1.5} \\
+	  &= -2.5e^{-1.5} + 1 \\
+	  &= 0.4422
+      \end{align*}
+      
+      Therefore, $P(y > 1.5) = 1 - 0.4422 = 0.5578$
+
+     
+     %6
+     \item
+      $C = \text{Card is a club}$\\
+      $K = \text{Card is a king}$\\
+      $P(C | K) = \dfrac{P(C \cap K)}{P(K)} = \dfrac{1/52}{4/52} = 1/4$
+     
+     %7
+     \item
+      $P(X \ge 2 | X \ge 1) = \dfrac{P(X \ge 2 \cap X \ge 1)}{P(X \ge 1)} 
+	  = \dfrac{P(X \ge 2)}{P(X \ge 1)}$ \\
+	  
+      $P(X \ge 1) = \dfrac{8}{15} \left[ \mfrac{1}{2}^1 + \mfrac{1}{2}^2 + \mfrac{1}{2}^3 \right] 
+	= \dfrac{7}{15}$ \\
+      $P(X \ge 2) = \dfrac{8}{15} \left[ \mfrac{1}{2}^2 + \mfrac{1}{2}^3 \right]
+	= \dfrac{1}{5}$ \\
+	
+      $P(X \ge 2 | X \ge 1) = \dfrac{1/5}{7/15} = \dfrac{3}{7}$
+      
+     %8
+     \item
+      $P( RR-Y-RR-KL ) = \dfrac{5}{12}\mfrac{4}{11}\mfrac{4}{10}\mfrac{3}{9} = \dfrac{2}{99}$
+     
+     %9
+     \item
+      $R1 = \text{A red chip is drawn from Urn 1}$\\
+      $W1 = \text{A white chip is drawn from Urn 1}$\\
+      $R = \text{A red chip is drawn from Urn 2}$\\
+      
+      $P(R) = P(R|R1)P(R1) + P(R|W1)P(W1) = \mfrac{4}{5}\mfrac{1}{3} + \mfrac{3}{5}\mfrac{2}{3}
+	= \dfrac{2}{3}$
+     
+     %10
+     \item
+      $PG = \text{Polygraph says guilty}$\\
+      $G = \text{Actually guilty}$\\
+      
+      $P(PG|G) = 0.9$, $P(\neg PG | \neg G) = 0.98$, $P(G) = 0.12$
+      
+      $P(\neg G | PG) = \dfrac{P(PG | \neg G) P(\neg G)}{P(PG|\neg G)P(\neg G) + P(PG | G)P(G)}
+	= \dfrac{0.02(0.88)}{0.02(0.88) + 0.9(0.12)} = 0.1401$
+     
+     %11
+     \item
+      \begin{enumerate}
+       %a
+       \item
+	No, they are not mutually exclusive because $P(A \cap B) \ne 0$
+       
+       %b
+       \item
+	They are not independent because $P(A \cap B) = 0.2 \ne 0.3 = P(A)P(B)$
+       
+       %c
+       \item
+	$P(A^C \cup B^C) = P[(A \cap B)^C] = 0.8$
+      \end{enumerate}
+     
+     %12
+     \item
+      $X \sim b(20, 1/78)$
+      
+      $P(X \ge 1) = 1 - P(0) = 1 - \left[\dbinom{20}{0}\mfrac{1}{78}^0\mfrac{77}{78}^{20}\right]
+	= 1 - \mfrac{77}{78}^{20} \approx 0.2275$
+     
+     %13
+     \item
+      \begin{enumerate}
+       %a
+       \item
+	$8! = 40320$
+       
+       %b
+       \item
+	$4!4!\times 2 = 1152$
+      \end{enumerate}
+    \end{enumerate}
+\end{document}

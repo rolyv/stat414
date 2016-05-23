@@ -1,0 +1,137 @@
+\documentclass{article}
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    \usepackage{multirow}
+        
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    \newcommand\todo[1]{\textbf{TODO: #1}}% 
+    \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+    \newcommand\seteq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\small\sffamily set}}}{=}}}
+    \newcommand\mfrac[2]{\left(\dfrac{#1}{#2}\right)}
+    \newcommand\lint{\mathlarger{\int}}
+    \newcommand\lsum{\mathlarger{\sum}}
+    \newcommand\lprod{\mathlarger{\prod}}
+    \newcommand\myskip[1]{\addtocounter{enumi}{#1}}
+    
+    \title{Review Exercises III}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    \begin{enumerate}
+     %1
+     \item 
+      San Diego Reader carried for 309.375 days. That's $\dfrac{309.375 - 266}{16} = 2.71$ standard
+      deviations above the mean which is still within the realm of possibility since 99.7 percent
+      of values lie between $\pm$3 standard deviations about the mean.
+     
+     %2
+     \item
+      $\dfrac{660-565}{75} = 1.2667$
+      
+      That means that about 10.2\% or 434 scored better.
+     
+     %3
+     \item
+      $\mu = \dfrac{103.5 + 144.5}{2} = 124$
+      
+      $z_{0.1} = 1.282$
+      
+      $\sigma = \dfrac{144.5-124}{1.282} = 15.99$
+     
+     %4
+     \item
+      $P(X \ge 4) = 1 - P(X \le 3) = 1 - [.3 + (.7)(.3) + (.7)^2(.3)] = 0.343$
+     
+     %5
+     \item
+      $P(x = 7) = \dbinom{6}{3}(0.3)^4(0.7)^3 = 0.05557$
+     
+     %6
+     \item
+      \begin{align*}
+	P(X \le 1) &= \lint_0^1 {\dfrac{xe^{-2x}}{\Gamma(2)(1/2)^2}dx} \\
+	  &= 4 \lint_0^1 {xe^{-2x}dx}
+      \end{align*}
+      
+      Doing integration by parts with $u = x$ and $dv = e^{-2x}dx$, we get,
+      \begin{align*}
+       4 \lint_0^1 {xe^{-2x}dx} &= 4\left[-\dfrac{1}{2}xe^{-2x}\Big|_0^1 - \lint_0^1 {-\dfrac{1}{2}e^{-2x}dx}\right] \\
+	&= 4 \left[ -\dfrac{e^{-2}}{2} - \dfrac{1}{4}e^{-2x}\Big|_0^1 \right] \\
+	&= 4 \left[ -\dfrac{e^{-2}}{2} - \dfrac{e^{-2}}{4} + \dfrac{1}{4} \right] \\
+	&= -3e^{-2} + 1 \\
+	&= 0.594
+      \end{align*}
+     
+     %7
+     \item
+      $P(X > 20) = e^{-20/20} = 0.3679$
+     
+     %8
+     \item
+      $E(X) = \lint_0^3 {\dfrac{1}{9}y^3 dy} = \dfrac{y^4}{36}\Big|_0^3 = \dfrac{81}{36} = 2.25$
+     
+     %9
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$f_Y(y) = \dfrac{3y^2}{39}$ \\	
+	$P(X=1|Y=2) = \dfrac{f(1,2)}{f_Y(2)} = \dfrac{4/39}{12/39} = \dfrac{1}{3}$
+       
+       %b
+       \item
+	$h(x|y) = \dfrac{f(x,y)}{f_Y(y)} = \dfrac{xy^2/39}{3y^2/39} = \dfrac{x}{3}$ \\
+	$E(X|Y=2) = \lsum_x{x h(x|2)} = 1\mfrac{1}{3} + 2\mfrac{2}{3} = \dfrac{5}{3}$
+      \end{enumerate}
+     
+     %10
+     \item
+      \begin{enumerate}
+       %a
+       \item 
+	$f_X(x) = \lint_0^\infty {2e^{-(x+y)} dy} = -2e^{-(x+y)}\Big|_0^\infty = 2e^{-x}$
+	
+	$P(X < 1) = \lint_0^1 {2e^{-x}dx} = -2e^{-x}\Big|_0^1 = -2e^{-1} + 2$
+	
+	$P(X<1, Y<1) = \lint_0^1 \lint_0^y { 2e^{-(x+y)} dx dy} 
+	  = \lint_0^1 \left[-2e^{-(x+y)}\Big|_0^y \right] = \lint_0^1 {-2e^{-2y} + 2e^{-y} dy} \\
+	  = e^{-2y}\Big|_0^1 - 2e^{-y}\Big|_0^1 = e^{-2} - 1 - (2e^{-1} - 2) = \dfrac{1 - 2e}{e^2}+1$
+	  
+	$P(Y<1 | X < 1) = \dfrac{P(X<1, Y<1)}{P(X<1)} = \dfrac{e^{-2}-2e^{-1}+1}{-2e^{-1}+2} 
+	  = 0.3161$
+       
+       %b
+       \item
+	$h(y|x) = \dfrac{2e^{-(x+y)}}{2e^{-x}} = e^{-y}$
+      \end{enumerate}
+     
+     %11
+     \item
+      $P(\text{even}) = 4/10$, $P(\text{odd}) = 6/10$
+      
+      $M(t) = E(e^{tx}) = e^{-3t}\mfrac{6}{10} + e^{5t}\mfrac{4}{10}$
+    \end{enumerate}
+\end{document}

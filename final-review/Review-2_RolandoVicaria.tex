@@ -1,0 +1,176 @@
+\documentclass{article}
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{indentfirst}
+    \usepackage{floatrow}
+    \usepackage{relsize}
+    \usepackage{multirow}
+        
+    \newcommand\perm[2]{{}_{#1}P_{#2}}%
+    \newcommand\todo[1]{\textbf{TODO: #1}}% 
+    \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+    \newcommand\seteq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\small\sffamily set}}}{=}}}
+    \newcommand\mfrac[2]{\left(\dfrac{#1}{#2}\right)}
+    \newcommand\lint{\mathlarger{\int}}
+    \newcommand\lsum{\mathlarger{\sum}}
+    \newcommand\lprod{\mathlarger{\prod}}
+    \newcommand\myskip[1]{\addtocounter{enumi}{#1}}
+    
+    \title{Review Exercises II}
+    \author{Roly Vicar\'ia \\ STAT414 Spring 2016}
+    
+\begin{document}
+    
+    \maketitle
+    
+    \begin{enumerate}
+     %1
+     \item
+      $4(14)(6) + 4(14)(5) + 4(6)(5) + 14(6)(5) = 1156$
+     
+     %2
+     \item
+      Florida can generate more distinct permutations (5040 vs 3780).
+      
+     %3
+     \item
+      Distinguishable permutations = $420$. Of those, $2\cdot\dfrac{5!}{2!3!} = 20$ start with 2 or 3.
+      Therefore, 400 start with either 4 or 5.
+     
+     %4
+     \item
+      $\dbinom{9}{2}\dbinom{4}{1} = 144$
+     
+     %5
+     \item
+      $\dbinom{10}{5} = 252$
+     
+     %6
+     \item
+      ACCLLUUS - $8! = 40320$ permutations
+      
+      AABEGLR - $7! = 5040$ permutations 
+      
+      8 permutations = CALCULUS, 2 permutations = ALGEBRA 
+      
+      $\dfrac{8}{40320} = \dfrac{1}{5040} < \dfrac{2}{5040}$
+      
+      Monkey has a better chance of rearranging AABEGLR to spell ALGEBRA.
+     
+     %7
+     \item
+      $P(\text{``full house among 5 fair dice''}) 
+	= \dfrac{\dbinom{6}{1}\dbinom{5}{3}\dbinom{5}{1}\dbinom{5}{2}}{6^5} = 0.3858$
+     
+     %8
+     \item
+      $A = \text{bridge hand contains 4 aces}$
+      
+      $B = \text{bridge hand contains 4 kings}$
+      
+      $P(A \cup B) = P(A) + P(B) - P(A \cap B) = \dfrac{\dbinom{48}{9}}{\dbinom{52}{13}}
+	+ \dfrac{\dbinom{48}{9}}{\dbinom{52}{13}} - \dfrac{\dbinom{44}{5}}{\dbinom{52}{13}}
+	= 0.00528$
+     
+     %9
+     \item
+      $\dbinom{12}{1}\dbinom{11}{1}\dbinom{10}{1}$ is the same as $12\cdot11\cdot 10$, which 
+      is computing the permutations of the remaining denominations. So it counts 3, 2, 1 as 
+      distinct from 1, 2, 3. Since order doesn't matter, $\dbinom{12}{3}$ is the correct
+      choice.
+     
+     %10
+     \item
+      $P(\text{unanimous decision}) = \dfrac{\dbinom{23}{12}}{\dbinom{25}{12}} = 0.26$
+     
+     %11
+     \item
+      $P(\text{at least one 6 among 6 dice}) = 1 - P(\text{no 6's}) = 1 - \dfrac{5^6}{6^6} 
+	= 0.6651$
+	
+      $P(\text{at least two 6's among 12 dice}) = 1 - P(\text{one 6}) - P(\text{no 6's})
+	= 1 - \dfrac{12 \cdot 5^{11}}{6^{12}} - \dfrac{5^{12}}{6^{12}} 
+	= 0.6187$
+	
+      $P(\text{at least three 6's among 18 dice}) = 1 - P(\text{two 6's}) - P(\text{one 6}) 
+	  - P(\text{no 6's}) \\
+	= 1 - \dfrac{\binom{18}{2}5^{16}}{6^{18}} - \dfrac{18 \cdot 5^{17}}{6^{18}}
+	  - \dfrac{5^{18}}{6^{18}}
+	= 0.5973$
+     
+     %12
+     \item
+      $P(.25 < y < .5) = \lint_{.25}^{.5} {6y(1 - y) dy} = 3y^2\Big|_{.25}^{.5} - 2y^3\Big|_{.25}^{.5}
+	= 0.3438$
+	
+      $W = \text{number of observations of Y lying between .25 and .5}$
+      
+      $P(W = 3) = \dbinom{5}{3}(0.3438)^3(1-0.3438)^2 = 0.1750$
+     
+     %13
+     \item
+      $F_Y(y) =
+	\begin{cases}
+	  0,			 & y < 0 \\
+	  \dfrac{3y^2}{2} - y^3, & 0 \le y \le 1 \\
+	  1/2,			 & 1 < y < 2 \\
+	  \dfrac{y}{2} - \dfrac{1}{2}, & 2 \le y \le 3 \\
+	  1, 			 & y > 3
+	\end{cases}
+      $
+     
+     %14
+     \item
+      $X \sim b(n, p_X)$, $Y \sim b(m, p_Y)$, $W = 4X + 6Y$ 
+      
+      \begin{tabular}{l | l | l | l}
+	           & X             & Y             & W \\
+	           \hline
+	$\mu$      & $np_X$        & $mp_Y$        & $4np_X + 6mp_Y$ \\
+	$\sigma^2$ & $np_X(1-p_X)$ & $mp_Y(1-p_Y)$ & $16np_X(1-p_X) + 36mp_Y(1-p_Y)$
+      \end{tabular}
+     
+     %15
+     \item
+      $E(e^{3X}) = \lsum_{x=0}^{10} {e^{3x} \dbinom{10}{x}(1/3)^x(2/3)^{10-x}} = 467592000$
+     
+     %16
+     \item
+      $X \sim b(10, 0.01)$
+      
+      $P(X \ge 1) = 1 - P(X = 0) = 1 - \dbinom{10}{0}(0.01)^0(0.99)^{10} = 0.09562$
+     
+     %17
+     \item
+      $X \sim Poisson(6.4)$
+      
+      $P(X < 3) = \dfrac{6.4^{0}e^{-6.4}}{0!} + \dfrac{6.4^{1}e^{-6.4}}{1!} 
+	+ \dfrac{6.4^{2}e^{-6.4}}{2!} = 0.04632$
+     
+     %18
+     \item
+      $X \sim N(100,16^2)$
+      
+      $z_{0.02} = 2.054$
+      
+      $x = 100 + 2.054(16) = 132.86$
+    \end{enumerate}
+\end{document}
